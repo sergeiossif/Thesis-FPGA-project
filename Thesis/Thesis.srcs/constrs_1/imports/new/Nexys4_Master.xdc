@@ -541,8 +541,8 @@ set_property PACKAGE_PIN D4 [get_ports UART_TXD]
 #set_property PACKAGE_PIN A8 [get_ports {PhyTxd[1]}]				
 	#set_property IOSTANDARD LVCMOS33 [get_ports {PhyTxd[1]}]
 ##Bank = 35, Pin name = IO_L11P_T1_SRCC_35,					Sch name = ETH_REFCLK
-#set_property PACKAGE_PIN D5 [get_ports PhyClk50Mhz]				
-	#set_property IOSTANDARD LVCMOS33 [get_ports PhyClk50Mhz]
+set_property PACKAGE_PIN D5 [get_ports eth_ref_clk]				
+	set_property IOSTANDARD LVCMOS33 [get_ports eth_ref_clk]
 ##Bank = 16, Pin name = IO_L12P_T1_MRCC_16,					Sch name = ETH_INTN
 #set_property PACKAGE_PIN B8 [get_ports PhyIntn]					
 	#set_property IOSTANDARD LVCMOS33 [get_ports PhyIntn]
