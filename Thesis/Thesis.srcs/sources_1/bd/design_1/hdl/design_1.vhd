@@ -1,7 +1,7 @@
 --Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2015.1 (win64) Build 1215546 Mon Apr 27 19:22:08 MDT 2015
---Date        : Wed Jul 22 17:57:05 2015
+--Date        : Sun Jul 26 19:00:57 2015
 --Host        : Thi3fLaptop running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -664,11 +664,11 @@ architecture STRUCTURE of microblaze_0_local_memory_imp_1K0VQXK is
     M_AddrStrobe : in STD_LOGIC;
     M_DBus : in STD_LOGIC_VECTOR ( 0 to 31 );
     M_BE : in STD_LOGIC_VECTOR ( 0 to 3 );
-    Sl_DBus : in STD_LOGIC_VECTOR ( 0 to 31 );
-    Sl_Ready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Sl_Wait : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Sl_UE : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Sl_CE : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Sl_DBus : in STD_LOGIC_VECTOR ( 0 to 63 );
+    Sl_Ready : in STD_LOGIC_VECTOR ( 0 to 1 );
+    Sl_Wait : in STD_LOGIC_VECTOR ( 0 to 1 );
+    Sl_UE : in STD_LOGIC_VECTOR ( 0 to 1 );
+    Sl_CE : in STD_LOGIC_VECTOR ( 0 to 1 );
     LMB_ABus : out STD_LOGIC_VECTOR ( 0 to 31 );
     LMB_ReadStrobe : out STD_LOGIC;
     LMB_WriteStrobe : out STD_LOGIC;
@@ -693,11 +693,11 @@ architecture STRUCTURE of microblaze_0_local_memory_imp_1K0VQXK is
     M_AddrStrobe : in STD_LOGIC;
     M_DBus : in STD_LOGIC_VECTOR ( 0 to 31 );
     M_BE : in STD_LOGIC_VECTOR ( 0 to 3 );
-    Sl_DBus : in STD_LOGIC_VECTOR ( 0 to 31 );
-    Sl_Ready : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Sl_Wait : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Sl_UE : in STD_LOGIC_VECTOR ( 0 to 0 );
-    Sl_CE : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Sl_DBus : in STD_LOGIC_VECTOR ( 0 to 127 );
+    Sl_Ready : in STD_LOGIC_VECTOR ( 0 to 3 );
+    Sl_Wait : in STD_LOGIC_VECTOR ( 0 to 3 );
+    Sl_UE : in STD_LOGIC_VECTOR ( 0 to 3 );
+    Sl_CE : in STD_LOGIC_VECTOR ( 0 to 3 );
     LMB_ABus : out STD_LOGIC_VECTOR ( 0 to 31 );
     LMB_ReadStrobe : out STD_LOGIC;
     LMB_WriteStrobe : out STD_LOGIC;
@@ -767,18 +767,217 @@ architecture STRUCTURE of microblaze_0_local_memory_imp_1K0VQXK is
     wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
     addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    douta : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    clkb : in STD_LOGIC;
-    rstb : in STD_LOGIC;
-    enb : in STD_LOGIC;
-    web : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    addrb : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dinb : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    doutb : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    douta : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component design_1_lmb_bram_0;
+  component design_1_lmb_bram_1 is
+  port (
+    clka : in STD_LOGIC;
+    rsta : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component design_1_lmb_bram_1;
+  component design_1_dlmb_bram_if_cntlr_1 is
+  port (
+    LMB_Clk : in STD_LOGIC;
+    LMB_Rst : in STD_LOGIC;
+    LMB_ABus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_WriteDBus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_AddrStrobe : in STD_LOGIC;
+    LMB_ReadStrobe : in STD_LOGIC;
+    LMB_WriteStrobe : in STD_LOGIC;
+    LMB_BE : in STD_LOGIC_VECTOR ( 0 to 3 );
+    Sl_DBus : out STD_LOGIC_VECTOR ( 0 to 31 );
+    Sl_Ready : out STD_LOGIC;
+    Sl_Wait : out STD_LOGIC;
+    Sl_UE : out STD_LOGIC;
+    Sl_CE : out STD_LOGIC;
+    BRAM_Rst_A : out STD_LOGIC;
+    BRAM_Clk_A : out STD_LOGIC;
+    BRAM_Addr_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_EN_A : out STD_LOGIC;
+    BRAM_WEN_A : out STD_LOGIC_VECTOR ( 0 to 3 );
+    BRAM_Dout_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_Din_A : in STD_LOGIC_VECTOR ( 0 to 31 )
+  );
+  end component design_1_dlmb_bram_if_cntlr_1;
+  component design_1_lmb_bram_2 is
+  port (
+    clka : in STD_LOGIC;
+    rsta : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component design_1_lmb_bram_2;
+  component design_1_ilmb_bram_if_cntlr_1 is
+  port (
+    LMB_Clk : in STD_LOGIC;
+    LMB_Rst : in STD_LOGIC;
+    LMB_ABus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_WriteDBus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_AddrStrobe : in STD_LOGIC;
+    LMB_ReadStrobe : in STD_LOGIC;
+    LMB_WriteStrobe : in STD_LOGIC;
+    LMB_BE : in STD_LOGIC_VECTOR ( 0 to 3 );
+    Sl_DBus : out STD_LOGIC_VECTOR ( 0 to 31 );
+    Sl_Ready : out STD_LOGIC;
+    Sl_Wait : out STD_LOGIC;
+    Sl_UE : out STD_LOGIC;
+    Sl_CE : out STD_LOGIC;
+    BRAM_Rst_A : out STD_LOGIC;
+    BRAM_Clk_A : out STD_LOGIC;
+    BRAM_Addr_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_EN_A : out STD_LOGIC;
+    BRAM_WEN_A : out STD_LOGIC_VECTOR ( 0 to 3 );
+    BRAM_Dout_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_Din_A : in STD_LOGIC_VECTOR ( 0 to 31 )
+  );
+  end component design_1_ilmb_bram_if_cntlr_1;
+  component design_1_lmb_bram1_0 is
+  port (
+    clka : in STD_LOGIC;
+    rsta : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component design_1_lmb_bram1_0;
+  component design_1_ilmb_bram_if_cntlr1_0 is
+  port (
+    LMB_Clk : in STD_LOGIC;
+    LMB_Rst : in STD_LOGIC;
+    LMB_ABus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_WriteDBus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_AddrStrobe : in STD_LOGIC;
+    LMB_ReadStrobe : in STD_LOGIC;
+    LMB_WriteStrobe : in STD_LOGIC;
+    LMB_BE : in STD_LOGIC_VECTOR ( 0 to 3 );
+    Sl_DBus : out STD_LOGIC_VECTOR ( 0 to 31 );
+    Sl_Ready : out STD_LOGIC;
+    Sl_Wait : out STD_LOGIC;
+    Sl_UE : out STD_LOGIC;
+    Sl_CE : out STD_LOGIC;
+    BRAM_Rst_A : out STD_LOGIC;
+    BRAM_Clk_A : out STD_LOGIC;
+    BRAM_Addr_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_EN_A : out STD_LOGIC;
+    BRAM_WEN_A : out STD_LOGIC_VECTOR ( 0 to 3 );
+    BRAM_Dout_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_Din_A : in STD_LOGIC_VECTOR ( 0 to 31 )
+  );
+  end component design_1_ilmb_bram_if_cntlr1_0;
+  component design_1_ilmb_bram_if_cntlr1_1 is
+  port (
+    LMB_Clk : in STD_LOGIC;
+    LMB_Rst : in STD_LOGIC;
+    LMB_ABus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_WriteDBus : in STD_LOGIC_VECTOR ( 0 to 31 );
+    LMB_AddrStrobe : in STD_LOGIC;
+    LMB_ReadStrobe : in STD_LOGIC;
+    LMB_WriteStrobe : in STD_LOGIC;
+    LMB_BE : in STD_LOGIC_VECTOR ( 0 to 3 );
+    Sl_DBus : out STD_LOGIC_VECTOR ( 0 to 31 );
+    Sl_Ready : out STD_LOGIC;
+    Sl_Wait : out STD_LOGIC;
+    Sl_UE : out STD_LOGIC;
+    Sl_CE : out STD_LOGIC;
+    BRAM_Rst_A : out STD_LOGIC;
+    BRAM_Clk_A : out STD_LOGIC;
+    BRAM_Addr_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_EN_A : out STD_LOGIC;
+    BRAM_WEN_A : out STD_LOGIC_VECTOR ( 0 to 3 );
+    BRAM_Dout_A : out STD_LOGIC_VECTOR ( 0 to 31 );
+    BRAM_Din_A : in STD_LOGIC_VECTOR ( 0 to 31 )
+  );
+  end component design_1_ilmb_bram_if_cntlr1_1;
+  component design_1_lmb_bram3_0 is
+  port (
+    clka : in STD_LOGIC;
+    rsta : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component design_1_lmb_bram3_0;
+  component design_1_lmb_bram3_1 is
+  port (
+    clka : in STD_LOGIC;
+    rsta : in STD_LOGIC;
+    ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    douta : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component design_1_lmb_bram3_1;
+  signal Conn1_CE : STD_LOGIC;
+  signal Conn1_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal Conn1_READY : STD_LOGIC;
+  signal Conn1_UE : STD_LOGIC;
+  signal Conn1_WAIT : STD_LOGIC;
+  signal Conn2_CE : STD_LOGIC;
+  signal Conn2_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal Conn2_READY : STD_LOGIC;
+  signal Conn2_UE : STD_LOGIC;
+  signal Conn2_WAIT : STD_LOGIC;
+  signal Conn3_CE : STD_LOGIC;
+  signal Conn3_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal Conn3_READY : STD_LOGIC;
+  signal Conn3_UE : STD_LOGIC;
+  signal Conn3_WAIT : STD_LOGIC;
+  signal Conn_CE : STD_LOGIC;
+  signal Conn_READDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal Conn_READY : STD_LOGIC;
+  signal Conn_UE : STD_LOGIC;
+  signal Conn_WAIT : STD_LOGIC;
   signal GND_1 : STD_LOGIC;
   signal SYS_Rst_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal dlmb_bram_if_cntlr1_BRAM_PORT_ADDR : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal dlmb_bram_if_cntlr1_BRAM_PORT_CLK : STD_LOGIC;
+  signal dlmb_bram_if_cntlr1_BRAM_PORT_DIN : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal dlmb_bram_if_cntlr1_BRAM_PORT_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal dlmb_bram_if_cntlr1_BRAM_PORT_EN : STD_LOGIC;
+  signal dlmb_bram_if_cntlr1_BRAM_PORT_RST : STD_LOGIC;
+  signal dlmb_bram_if_cntlr1_BRAM_PORT_WE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal ilmb_bram_if_cntlr1_BRAM_PORT_ADDR : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr1_BRAM_PORT_CLK : STD_LOGIC;
+  signal ilmb_bram_if_cntlr1_BRAM_PORT_DIN : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr1_BRAM_PORT_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ilmb_bram_if_cntlr1_BRAM_PORT_EN : STD_LOGIC;
+  signal ilmb_bram_if_cntlr1_BRAM_PORT_RST : STD_LOGIC;
+  signal ilmb_bram_if_cntlr1_BRAM_PORT_WE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal ilmb_bram_if_cntlr2_BRAM_PORT_ADDR : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr2_BRAM_PORT_CLK : STD_LOGIC;
+  signal ilmb_bram_if_cntlr2_BRAM_PORT_DIN : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr2_BRAM_PORT_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ilmb_bram_if_cntlr2_BRAM_PORT_EN : STD_LOGIC;
+  signal ilmb_bram_if_cntlr2_BRAM_PORT_RST : STD_LOGIC;
+  signal ilmb_bram_if_cntlr2_BRAM_PORT_WE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal ilmb_bram_if_cntlr3_BRAM_PORT_ADDR : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr3_BRAM_PORT_CLK : STD_LOGIC;
+  signal ilmb_bram_if_cntlr3_BRAM_PORT_DIN : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr3_BRAM_PORT_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ilmb_bram_if_cntlr3_BRAM_PORT_EN : STD_LOGIC;
+  signal ilmb_bram_if_cntlr3_BRAM_PORT_RST : STD_LOGIC;
+  signal ilmb_bram_if_cntlr3_BRAM_PORT_WE : STD_LOGIC_VECTOR ( 0 to 3 );
+  signal ilmb_bram_if_cntlr_BRAM_PORT_ADDR : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr_BRAM_PORT_CLK : STD_LOGIC;
+  signal ilmb_bram_if_cntlr_BRAM_PORT_DIN : STD_LOGIC_VECTOR ( 0 to 31 );
+  signal ilmb_bram_if_cntlr_BRAM_PORT_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal ilmb_bram_if_cntlr_BRAM_PORT_EN : STD_LOGIC;
+  signal ilmb_bram_if_cntlr_BRAM_PORT_RST : STD_LOGIC;
+  signal ilmb_bram_if_cntlr_BRAM_PORT_WE : STD_LOGIC_VECTOR ( 0 to 3 );
   signal microblaze_0_Clk : STD_LOGIC;
   signal microblaze_0_dlmb_ABUS : STD_LOGIC_VECTOR ( 0 to 31 );
   signal microblaze_0_dlmb_ADDRSTROBE : STD_LOGIC;
@@ -828,19 +1027,22 @@ architecture STRUCTURE of microblaze_0_local_memory_imp_1K0VQXK is
   signal microblaze_0_ilmb_bus_WAIT : STD_LOGIC;
   signal microblaze_0_ilmb_bus_WRITEDBUS : STD_LOGIC_VECTOR ( 0 to 31 );
   signal microblaze_0_ilmb_bus_WRITESTROBE : STD_LOGIC;
-  signal microblaze_0_ilmb_cntlr_ADDR : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal microblaze_0_ilmb_cntlr_CLK : STD_LOGIC;
-  signal microblaze_0_ilmb_cntlr_DIN : STD_LOGIC_VECTOR ( 0 to 31 );
-  signal microblaze_0_ilmb_cntlr_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal microblaze_0_ilmb_cntlr_EN : STD_LOGIC;
-  signal microblaze_0_ilmb_cntlr_RST : STD_LOGIC;
-  signal microblaze_0_ilmb_cntlr_WE : STD_LOGIC_VECTOR ( 0 to 3 );
   signal NLW_dlmb_v10_LMB_Rst_UNCONNECTED : STD_LOGIC;
   signal NLW_ilmb_v10_LMB_Rst_UNCONNECTED : STD_LOGIC;
+  attribute BMM_INFO_ADDRESS_SPACE : string;
+  attribute BMM_INFO_ADDRESS_SPACE of dlmb_bram_if_cntlr : label is "byte  0x0 32 >  design_1 microblaze_0_local_memory/lmb_bram";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of dlmb_bram_if_cntlr : label is "yes";
-  attribute bmm_info_address_space : string;
-  attribute bmm_info_address_space of dlmb_bram_if_cntlr : label is "byte  0x0 32 >  design_1 microblaze_0_local_memory/lmb_bram";
+  attribute BMM_INFO_ADDRESS_SPACE of dlmb_bram_if_cntlr1 : label is "byte  0x0 32 >  design_1 microblaze_0_local_memory/lmb_bram";
+  attribute KEEP_HIERARCHY of dlmb_bram_if_cntlr1 : label is "yes";
+  attribute BMM_INFO_ADDRESS_SPACE of ilmb_bram_if_cntlr : label is "byte  0x0 32 >  design_1 microblaze_0_local_memory/lmb_bram1 design_1 microblaze_0_local_memory/lmb_bram3 design_1 microblaze_0_local_memory/lmb_bram4 design_1 microblaze_0_local_memory/lmb_bram5 design_1 microblaze_0_local_memory/lmb_bram design_1 microblaze_0_local_memory/lmb_bram2";
+  attribute KEEP_HIERARCHY of ilmb_bram_if_cntlr : label is "yes";
+  attribute BMM_INFO_ADDRESS_SPACE of ilmb_bram_if_cntlr1 : label is "byte  0x10000 32 >  design_1 microblaze_0_local_memory/lmb_bram3 design_1 microblaze_0_local_memory/lmb_bram4 design_1 microblaze_0_local_memory/lmb_bram5";
+  attribute KEEP_HIERARCHY of ilmb_bram_if_cntlr1 : label is "yes";
+  attribute BMM_INFO_ADDRESS_SPACE of ilmb_bram_if_cntlr2 : label is "byte  0x0 32 >  design_1 microblaze_0_local_memory/lmb_bram1";
+  attribute KEEP_HIERARCHY of ilmb_bram_if_cntlr2 : label is "yes";
+  attribute BMM_INFO_ADDRESS_SPACE of ilmb_bram_if_cntlr3 : label is "byte  0x0 32 >  design_1 microblaze_0_local_memory/lmb_bram1";
+  attribute KEEP_HIERARCHY of ilmb_bram_if_cntlr3 : label is "yes";
 begin
   DLMB_ce <= microblaze_0_dlmb_CE;
   DLMB_readdbus(0 to 31) <= microblaze_0_dlmb_READDBUS(0 to 31);
@@ -921,6 +1123,60 @@ dlmb_bram_if_cntlr: component design_1_dlmb_bram_if_cntlr_0
       Sl_UE => microblaze_0_dlmb_bus_UE,
       Sl_Wait => microblaze_0_dlmb_bus_WAIT
     );
+dlmb_bram_if_cntlr1: component design_1_dlmb_bram_if_cntlr_1
+     port map (
+      BRAM_Addr_A(0 to 31) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(0 to 31),
+      BRAM_Clk_A => dlmb_bram_if_cntlr1_BRAM_PORT_CLK,
+      BRAM_Din_A(0) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(31),
+      BRAM_Din_A(1) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(30),
+      BRAM_Din_A(2) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(29),
+      BRAM_Din_A(3) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(28),
+      BRAM_Din_A(4) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(27),
+      BRAM_Din_A(5) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(26),
+      BRAM_Din_A(6) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(25),
+      BRAM_Din_A(7) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(24),
+      BRAM_Din_A(8) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(23),
+      BRAM_Din_A(9) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(22),
+      BRAM_Din_A(10) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(21),
+      BRAM_Din_A(11) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(20),
+      BRAM_Din_A(12) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(19),
+      BRAM_Din_A(13) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(18),
+      BRAM_Din_A(14) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(17),
+      BRAM_Din_A(15) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(16),
+      BRAM_Din_A(16) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(15),
+      BRAM_Din_A(17) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(14),
+      BRAM_Din_A(18) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(13),
+      BRAM_Din_A(19) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(12),
+      BRAM_Din_A(20) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(11),
+      BRAM_Din_A(21) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(10),
+      BRAM_Din_A(22) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(9),
+      BRAM_Din_A(23) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(8),
+      BRAM_Din_A(24) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(7),
+      BRAM_Din_A(25) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(6),
+      BRAM_Din_A(26) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(5),
+      BRAM_Din_A(27) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(4),
+      BRAM_Din_A(28) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(3),
+      BRAM_Din_A(29) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(2),
+      BRAM_Din_A(30) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(1),
+      BRAM_Din_A(31) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(0),
+      BRAM_Dout_A(0 to 31) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(0 to 31),
+      BRAM_EN_A => dlmb_bram_if_cntlr1_BRAM_PORT_EN,
+      BRAM_Rst_A => dlmb_bram_if_cntlr1_BRAM_PORT_RST,
+      BRAM_WEN_A(0 to 3) => dlmb_bram_if_cntlr1_BRAM_PORT_WE(0 to 3),
+      LMB_ABus(0 to 31) => microblaze_0_dlmb_bus_ABUS(0 to 31),
+      LMB_AddrStrobe => microblaze_0_dlmb_bus_ADDRSTROBE,
+      LMB_BE(0 to 3) => microblaze_0_dlmb_bus_BE(0 to 3),
+      LMB_Clk => microblaze_0_Clk,
+      LMB_ReadStrobe => microblaze_0_dlmb_bus_READSTROBE,
+      LMB_Rst => SYS_Rst_1(0),
+      LMB_WriteDBus(0 to 31) => microblaze_0_dlmb_bus_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => microblaze_0_dlmb_bus_WRITESTROBE,
+      Sl_CE => Conn_CE,
+      Sl_DBus(0 to 31) => Conn_READDBUS(0 to 31),
+      Sl_Ready => Conn_READY,
+      Sl_UE => Conn_UE,
+      Sl_Wait => Conn_WAIT
+    );
 dlmb_v10: component design_1_dlmb_v10_0
      port map (
       LMB_ABus(0 to 31) => microblaze_0_dlmb_bus_ABUS(0 to 31),
@@ -944,51 +1200,56 @@ dlmb_v10: component design_1_dlmb_v10_0
       M_WriteStrobe => microblaze_0_dlmb_WRITESTROBE,
       SYS_Rst => SYS_Rst_1(0),
       Sl_CE(0) => microblaze_0_dlmb_bus_CE,
+      Sl_CE(1) => Conn_CE,
       Sl_DBus(0 to 31) => microblaze_0_dlmb_bus_READDBUS(0 to 31),
+      Sl_DBus(32 to 63) => Conn_READDBUS(0 to 31),
       Sl_Ready(0) => microblaze_0_dlmb_bus_READY,
+      Sl_Ready(1) => Conn_READY,
       Sl_UE(0) => microblaze_0_dlmb_bus_UE,
-      Sl_Wait(0) => microblaze_0_dlmb_bus_WAIT
+      Sl_UE(1) => Conn_UE,
+      Sl_Wait(0) => microblaze_0_dlmb_bus_WAIT,
+      Sl_Wait(1) => Conn_WAIT
     );
 ilmb_bram_if_cntlr: component design_1_ilmb_bram_if_cntlr_0
      port map (
-      BRAM_Addr_A(0 to 31) => microblaze_0_ilmb_cntlr_ADDR(0 to 31),
-      BRAM_Clk_A => microblaze_0_ilmb_cntlr_CLK,
-      BRAM_Din_A(0) => microblaze_0_ilmb_cntlr_DOUT(31),
-      BRAM_Din_A(1) => microblaze_0_ilmb_cntlr_DOUT(30),
-      BRAM_Din_A(2) => microblaze_0_ilmb_cntlr_DOUT(29),
-      BRAM_Din_A(3) => microblaze_0_ilmb_cntlr_DOUT(28),
-      BRAM_Din_A(4) => microblaze_0_ilmb_cntlr_DOUT(27),
-      BRAM_Din_A(5) => microblaze_0_ilmb_cntlr_DOUT(26),
-      BRAM_Din_A(6) => microblaze_0_ilmb_cntlr_DOUT(25),
-      BRAM_Din_A(7) => microblaze_0_ilmb_cntlr_DOUT(24),
-      BRAM_Din_A(8) => microblaze_0_ilmb_cntlr_DOUT(23),
-      BRAM_Din_A(9) => microblaze_0_ilmb_cntlr_DOUT(22),
-      BRAM_Din_A(10) => microblaze_0_ilmb_cntlr_DOUT(21),
-      BRAM_Din_A(11) => microblaze_0_ilmb_cntlr_DOUT(20),
-      BRAM_Din_A(12) => microblaze_0_ilmb_cntlr_DOUT(19),
-      BRAM_Din_A(13) => microblaze_0_ilmb_cntlr_DOUT(18),
-      BRAM_Din_A(14) => microblaze_0_ilmb_cntlr_DOUT(17),
-      BRAM_Din_A(15) => microblaze_0_ilmb_cntlr_DOUT(16),
-      BRAM_Din_A(16) => microblaze_0_ilmb_cntlr_DOUT(15),
-      BRAM_Din_A(17) => microblaze_0_ilmb_cntlr_DOUT(14),
-      BRAM_Din_A(18) => microblaze_0_ilmb_cntlr_DOUT(13),
-      BRAM_Din_A(19) => microblaze_0_ilmb_cntlr_DOUT(12),
-      BRAM_Din_A(20) => microblaze_0_ilmb_cntlr_DOUT(11),
-      BRAM_Din_A(21) => microblaze_0_ilmb_cntlr_DOUT(10),
-      BRAM_Din_A(22) => microblaze_0_ilmb_cntlr_DOUT(9),
-      BRAM_Din_A(23) => microblaze_0_ilmb_cntlr_DOUT(8),
-      BRAM_Din_A(24) => microblaze_0_ilmb_cntlr_DOUT(7),
-      BRAM_Din_A(25) => microblaze_0_ilmb_cntlr_DOUT(6),
-      BRAM_Din_A(26) => microblaze_0_ilmb_cntlr_DOUT(5),
-      BRAM_Din_A(27) => microblaze_0_ilmb_cntlr_DOUT(4),
-      BRAM_Din_A(28) => microblaze_0_ilmb_cntlr_DOUT(3),
-      BRAM_Din_A(29) => microblaze_0_ilmb_cntlr_DOUT(2),
-      BRAM_Din_A(30) => microblaze_0_ilmb_cntlr_DOUT(1),
-      BRAM_Din_A(31) => microblaze_0_ilmb_cntlr_DOUT(0),
-      BRAM_Dout_A(0 to 31) => microblaze_0_ilmb_cntlr_DIN(0 to 31),
-      BRAM_EN_A => microblaze_0_ilmb_cntlr_EN,
-      BRAM_Rst_A => microblaze_0_ilmb_cntlr_RST,
-      BRAM_WEN_A(0 to 3) => microblaze_0_ilmb_cntlr_WE(0 to 3),
+      BRAM_Addr_A(0 to 31) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(0 to 31),
+      BRAM_Clk_A => ilmb_bram_if_cntlr_BRAM_PORT_CLK,
+      BRAM_Din_A(0) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(31),
+      BRAM_Din_A(1) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(30),
+      BRAM_Din_A(2) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(29),
+      BRAM_Din_A(3) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(28),
+      BRAM_Din_A(4) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(27),
+      BRAM_Din_A(5) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(26),
+      BRAM_Din_A(6) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(25),
+      BRAM_Din_A(7) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(24),
+      BRAM_Din_A(8) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(23),
+      BRAM_Din_A(9) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(22),
+      BRAM_Din_A(10) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(21),
+      BRAM_Din_A(11) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(20),
+      BRAM_Din_A(12) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(19),
+      BRAM_Din_A(13) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(18),
+      BRAM_Din_A(14) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(17),
+      BRAM_Din_A(15) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(16),
+      BRAM_Din_A(16) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(15),
+      BRAM_Din_A(17) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(14),
+      BRAM_Din_A(18) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(13),
+      BRAM_Din_A(19) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(12),
+      BRAM_Din_A(20) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(11),
+      BRAM_Din_A(21) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(10),
+      BRAM_Din_A(22) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(9),
+      BRAM_Din_A(23) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(8),
+      BRAM_Din_A(24) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(7),
+      BRAM_Din_A(25) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(6),
+      BRAM_Din_A(26) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(5),
+      BRAM_Din_A(27) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(4),
+      BRAM_Din_A(28) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(3),
+      BRAM_Din_A(29) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(2),
+      BRAM_Din_A(30) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(1),
+      BRAM_Din_A(31) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(0),
+      BRAM_Dout_A(0 to 31) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(0 to 31),
+      BRAM_EN_A => ilmb_bram_if_cntlr_BRAM_PORT_EN,
+      BRAM_Rst_A => ilmb_bram_if_cntlr_BRAM_PORT_RST,
+      BRAM_WEN_A(0 to 3) => ilmb_bram_if_cntlr_BRAM_PORT_WE(0 to 3),
       LMB_ABus(0 to 31) => microblaze_0_ilmb_bus_ABUS(0 to 31),
       LMB_AddrStrobe => microblaze_0_ilmb_bus_ADDRSTROBE,
       LMB_BE(0 to 3) => microblaze_0_ilmb_bus_BE(0 to 3),
@@ -1002,6 +1263,168 @@ ilmb_bram_if_cntlr: component design_1_ilmb_bram_if_cntlr_0
       Sl_Ready => microblaze_0_ilmb_bus_READY,
       Sl_UE => microblaze_0_ilmb_bus_UE,
       Sl_Wait => microblaze_0_ilmb_bus_WAIT
+    );
+ilmb_bram_if_cntlr1: component design_1_ilmb_bram_if_cntlr_1
+     port map (
+      BRAM_Addr_A(0 to 31) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(0 to 31),
+      BRAM_Clk_A => ilmb_bram_if_cntlr1_BRAM_PORT_CLK,
+      BRAM_Din_A(0) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(31),
+      BRAM_Din_A(1) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(30),
+      BRAM_Din_A(2) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(29),
+      BRAM_Din_A(3) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(28),
+      BRAM_Din_A(4) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(27),
+      BRAM_Din_A(5) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(26),
+      BRAM_Din_A(6) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(25),
+      BRAM_Din_A(7) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(24),
+      BRAM_Din_A(8) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(23),
+      BRAM_Din_A(9) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(22),
+      BRAM_Din_A(10) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(21),
+      BRAM_Din_A(11) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(20),
+      BRAM_Din_A(12) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(19),
+      BRAM_Din_A(13) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(18),
+      BRAM_Din_A(14) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(17),
+      BRAM_Din_A(15) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(16),
+      BRAM_Din_A(16) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(15),
+      BRAM_Din_A(17) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(14),
+      BRAM_Din_A(18) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(13),
+      BRAM_Din_A(19) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(12),
+      BRAM_Din_A(20) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(11),
+      BRAM_Din_A(21) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(10),
+      BRAM_Din_A(22) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(9),
+      BRAM_Din_A(23) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(8),
+      BRAM_Din_A(24) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(7),
+      BRAM_Din_A(25) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(6),
+      BRAM_Din_A(26) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(5),
+      BRAM_Din_A(27) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(4),
+      BRAM_Din_A(28) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(3),
+      BRAM_Din_A(29) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(2),
+      BRAM_Din_A(30) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(1),
+      BRAM_Din_A(31) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(0),
+      BRAM_Dout_A(0 to 31) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(0 to 31),
+      BRAM_EN_A => ilmb_bram_if_cntlr1_BRAM_PORT_EN,
+      BRAM_Rst_A => ilmb_bram_if_cntlr1_BRAM_PORT_RST,
+      BRAM_WEN_A(0 to 3) => ilmb_bram_if_cntlr1_BRAM_PORT_WE(0 to 3),
+      LMB_ABus(0 to 31) => microblaze_0_ilmb_bus_ABUS(0 to 31),
+      LMB_AddrStrobe => microblaze_0_ilmb_bus_ADDRSTROBE,
+      LMB_BE(0 to 3) => microblaze_0_ilmb_bus_BE(0 to 3),
+      LMB_Clk => microblaze_0_Clk,
+      LMB_ReadStrobe => microblaze_0_ilmb_bus_READSTROBE,
+      LMB_Rst => SYS_Rst_1(0),
+      LMB_WriteDBus(0 to 31) => microblaze_0_ilmb_bus_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => microblaze_0_ilmb_bus_WRITESTROBE,
+      Sl_CE => Conn1_CE,
+      Sl_DBus(0 to 31) => Conn1_READDBUS(0 to 31),
+      Sl_Ready => Conn1_READY,
+      Sl_UE => Conn1_UE,
+      Sl_Wait => Conn1_WAIT
+    );
+ilmb_bram_if_cntlr2: component design_1_ilmb_bram_if_cntlr1_0
+     port map (
+      BRAM_Addr_A(0 to 31) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(0 to 31),
+      BRAM_Clk_A => ilmb_bram_if_cntlr2_BRAM_PORT_CLK,
+      BRAM_Din_A(0) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(31),
+      BRAM_Din_A(1) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(30),
+      BRAM_Din_A(2) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(29),
+      BRAM_Din_A(3) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(28),
+      BRAM_Din_A(4) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(27),
+      BRAM_Din_A(5) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(26),
+      BRAM_Din_A(6) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(25),
+      BRAM_Din_A(7) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(24),
+      BRAM_Din_A(8) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(23),
+      BRAM_Din_A(9) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(22),
+      BRAM_Din_A(10) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(21),
+      BRAM_Din_A(11) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(20),
+      BRAM_Din_A(12) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(19),
+      BRAM_Din_A(13) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(18),
+      BRAM_Din_A(14) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(17),
+      BRAM_Din_A(15) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(16),
+      BRAM_Din_A(16) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(15),
+      BRAM_Din_A(17) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(14),
+      BRAM_Din_A(18) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(13),
+      BRAM_Din_A(19) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(12),
+      BRAM_Din_A(20) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(11),
+      BRAM_Din_A(21) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(10),
+      BRAM_Din_A(22) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(9),
+      BRAM_Din_A(23) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(8),
+      BRAM_Din_A(24) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(7),
+      BRAM_Din_A(25) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(6),
+      BRAM_Din_A(26) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(5),
+      BRAM_Din_A(27) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(4),
+      BRAM_Din_A(28) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(3),
+      BRAM_Din_A(29) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(2),
+      BRAM_Din_A(30) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(1),
+      BRAM_Din_A(31) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(0),
+      BRAM_Dout_A(0 to 31) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(0 to 31),
+      BRAM_EN_A => ilmb_bram_if_cntlr2_BRAM_PORT_EN,
+      BRAM_Rst_A => ilmb_bram_if_cntlr2_BRAM_PORT_RST,
+      BRAM_WEN_A(0 to 3) => ilmb_bram_if_cntlr2_BRAM_PORT_WE(0 to 3),
+      LMB_ABus(0 to 31) => microblaze_0_ilmb_bus_ABUS(0 to 31),
+      LMB_AddrStrobe => microblaze_0_ilmb_bus_ADDRSTROBE,
+      LMB_BE(0 to 3) => microblaze_0_ilmb_bus_BE(0 to 3),
+      LMB_Clk => microblaze_0_Clk,
+      LMB_ReadStrobe => microblaze_0_ilmb_bus_READSTROBE,
+      LMB_Rst => SYS_Rst_1(0),
+      LMB_WriteDBus(0 to 31) => microblaze_0_ilmb_bus_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => microblaze_0_ilmb_bus_WRITESTROBE,
+      Sl_CE => Conn2_CE,
+      Sl_DBus(0 to 31) => Conn2_READDBUS(0 to 31),
+      Sl_Ready => Conn2_READY,
+      Sl_UE => Conn2_UE,
+      Sl_Wait => Conn2_WAIT
+    );
+ilmb_bram_if_cntlr3: component design_1_ilmb_bram_if_cntlr1_1
+     port map (
+      BRAM_Addr_A(0 to 31) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(0 to 31),
+      BRAM_Clk_A => ilmb_bram_if_cntlr3_BRAM_PORT_CLK,
+      BRAM_Din_A(0) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(31),
+      BRAM_Din_A(1) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(30),
+      BRAM_Din_A(2) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(29),
+      BRAM_Din_A(3) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(28),
+      BRAM_Din_A(4) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(27),
+      BRAM_Din_A(5) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(26),
+      BRAM_Din_A(6) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(25),
+      BRAM_Din_A(7) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(24),
+      BRAM_Din_A(8) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(23),
+      BRAM_Din_A(9) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(22),
+      BRAM_Din_A(10) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(21),
+      BRAM_Din_A(11) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(20),
+      BRAM_Din_A(12) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(19),
+      BRAM_Din_A(13) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(18),
+      BRAM_Din_A(14) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(17),
+      BRAM_Din_A(15) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(16),
+      BRAM_Din_A(16) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(15),
+      BRAM_Din_A(17) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(14),
+      BRAM_Din_A(18) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(13),
+      BRAM_Din_A(19) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(12),
+      BRAM_Din_A(20) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(11),
+      BRAM_Din_A(21) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(10),
+      BRAM_Din_A(22) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(9),
+      BRAM_Din_A(23) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(8),
+      BRAM_Din_A(24) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(7),
+      BRAM_Din_A(25) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(6),
+      BRAM_Din_A(26) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(5),
+      BRAM_Din_A(27) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(4),
+      BRAM_Din_A(28) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(3),
+      BRAM_Din_A(29) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(2),
+      BRAM_Din_A(30) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(1),
+      BRAM_Din_A(31) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(0),
+      BRAM_Dout_A(0 to 31) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(0 to 31),
+      BRAM_EN_A => ilmb_bram_if_cntlr3_BRAM_PORT_EN,
+      BRAM_Rst_A => ilmb_bram_if_cntlr3_BRAM_PORT_RST,
+      BRAM_WEN_A(0 to 3) => ilmb_bram_if_cntlr3_BRAM_PORT_WE(0 to 3),
+      LMB_ABus(0 to 31) => microblaze_0_ilmb_bus_ABUS(0 to 31),
+      LMB_AddrStrobe => microblaze_0_ilmb_bus_ADDRSTROBE,
+      LMB_BE(0 to 3) => microblaze_0_ilmb_bus_BE(0 to 3),
+      LMB_Clk => microblaze_0_Clk,
+      LMB_ReadStrobe => microblaze_0_ilmb_bus_READSTROBE,
+      LMB_Rst => SYS_Rst_1(0),
+      LMB_WriteDBus(0 to 31) => microblaze_0_ilmb_bus_WRITEDBUS(0 to 31),
+      LMB_WriteStrobe => microblaze_0_ilmb_bus_WRITESTROBE,
+      Sl_CE => Conn3_CE,
+      Sl_DBus(0 to 31) => Conn3_READDBUS(0 to 31),
+      Sl_Ready => Conn3_READY,
+      Sl_UE => Conn3_UE,
+      Sl_Wait => Conn3_WAIT
     );
 ilmb_v10: component design_1_ilmb_v10_0
      port map (
@@ -1060,10 +1483,25 @@ ilmb_v10: component design_1_ilmb_v10_0
       M_WriteStrobe => GND_1,
       SYS_Rst => SYS_Rst_1(0),
       Sl_CE(0) => microblaze_0_ilmb_bus_CE,
+      Sl_CE(1) => Conn1_CE,
+      Sl_CE(2) => Conn2_CE,
+      Sl_CE(3) => Conn3_CE,
       Sl_DBus(0 to 31) => microblaze_0_ilmb_bus_READDBUS(0 to 31),
+      Sl_DBus(32 to 63) => Conn1_READDBUS(0 to 31),
+      Sl_DBus(64 to 95) => Conn2_READDBUS(0 to 31),
+      Sl_DBus(96 to 127) => Conn3_READDBUS(0 to 31),
       Sl_Ready(0) => microblaze_0_ilmb_bus_READY,
+      Sl_Ready(1) => Conn1_READY,
+      Sl_Ready(2) => Conn2_READY,
+      Sl_Ready(3) => Conn3_READY,
       Sl_UE(0) => microblaze_0_ilmb_bus_UE,
-      Sl_Wait(0) => microblaze_0_ilmb_bus_WAIT
+      Sl_UE(1) => Conn1_UE,
+      Sl_UE(2) => Conn2_UE,
+      Sl_UE(3) => Conn3_UE,
+      Sl_Wait(0) => microblaze_0_ilmb_bus_WAIT,
+      Sl_Wait(1) => Conn1_WAIT,
+      Sl_Wait(2) => Conn2_WAIT,
+      Sl_Wait(3) => Conn3_WAIT
     );
 lmb_bram: component design_1_lmb_bram_0
      port map (
@@ -1099,40 +1537,7 @@ lmb_bram: component design_1_lmb_bram_0
       addra(2) => microblaze_0_dlmb_cntlr_ADDR(29),
       addra(1) => microblaze_0_dlmb_cntlr_ADDR(30),
       addra(0) => microblaze_0_dlmb_cntlr_ADDR(31),
-      addrb(31) => microblaze_0_ilmb_cntlr_ADDR(0),
-      addrb(30) => microblaze_0_ilmb_cntlr_ADDR(1),
-      addrb(29) => microblaze_0_ilmb_cntlr_ADDR(2),
-      addrb(28) => microblaze_0_ilmb_cntlr_ADDR(3),
-      addrb(27) => microblaze_0_ilmb_cntlr_ADDR(4),
-      addrb(26) => microblaze_0_ilmb_cntlr_ADDR(5),
-      addrb(25) => microblaze_0_ilmb_cntlr_ADDR(6),
-      addrb(24) => microblaze_0_ilmb_cntlr_ADDR(7),
-      addrb(23) => microblaze_0_ilmb_cntlr_ADDR(8),
-      addrb(22) => microblaze_0_ilmb_cntlr_ADDR(9),
-      addrb(21) => microblaze_0_ilmb_cntlr_ADDR(10),
-      addrb(20) => microblaze_0_ilmb_cntlr_ADDR(11),
-      addrb(19) => microblaze_0_ilmb_cntlr_ADDR(12),
-      addrb(18) => microblaze_0_ilmb_cntlr_ADDR(13),
-      addrb(17) => microblaze_0_ilmb_cntlr_ADDR(14),
-      addrb(16) => microblaze_0_ilmb_cntlr_ADDR(15),
-      addrb(15) => microblaze_0_ilmb_cntlr_ADDR(16),
-      addrb(14) => microblaze_0_ilmb_cntlr_ADDR(17),
-      addrb(13) => microblaze_0_ilmb_cntlr_ADDR(18),
-      addrb(12) => microblaze_0_ilmb_cntlr_ADDR(19),
-      addrb(11) => microblaze_0_ilmb_cntlr_ADDR(20),
-      addrb(10) => microblaze_0_ilmb_cntlr_ADDR(21),
-      addrb(9) => microblaze_0_ilmb_cntlr_ADDR(22),
-      addrb(8) => microblaze_0_ilmb_cntlr_ADDR(23),
-      addrb(7) => microblaze_0_ilmb_cntlr_ADDR(24),
-      addrb(6) => microblaze_0_ilmb_cntlr_ADDR(25),
-      addrb(5) => microblaze_0_ilmb_cntlr_ADDR(26),
-      addrb(4) => microblaze_0_ilmb_cntlr_ADDR(27),
-      addrb(3) => microblaze_0_ilmb_cntlr_ADDR(28),
-      addrb(2) => microblaze_0_ilmb_cntlr_ADDR(29),
-      addrb(1) => microblaze_0_ilmb_cntlr_ADDR(30),
-      addrb(0) => microblaze_0_ilmb_cntlr_ADDR(31),
       clka => microblaze_0_dlmb_cntlr_CLK,
-      clkb => microblaze_0_ilmb_cntlr_CLK,
       dina(31) => microblaze_0_dlmb_cntlr_DIN(0),
       dina(30) => microblaze_0_dlmb_cntlr_DIN(1),
       dina(29) => microblaze_0_dlmb_cntlr_DIN(2),
@@ -1165,52 +1570,388 @@ lmb_bram: component design_1_lmb_bram_0
       dina(2) => microblaze_0_dlmb_cntlr_DIN(29),
       dina(1) => microblaze_0_dlmb_cntlr_DIN(30),
       dina(0) => microblaze_0_dlmb_cntlr_DIN(31),
-      dinb(31) => microblaze_0_ilmb_cntlr_DIN(0),
-      dinb(30) => microblaze_0_ilmb_cntlr_DIN(1),
-      dinb(29) => microblaze_0_ilmb_cntlr_DIN(2),
-      dinb(28) => microblaze_0_ilmb_cntlr_DIN(3),
-      dinb(27) => microblaze_0_ilmb_cntlr_DIN(4),
-      dinb(26) => microblaze_0_ilmb_cntlr_DIN(5),
-      dinb(25) => microblaze_0_ilmb_cntlr_DIN(6),
-      dinb(24) => microblaze_0_ilmb_cntlr_DIN(7),
-      dinb(23) => microblaze_0_ilmb_cntlr_DIN(8),
-      dinb(22) => microblaze_0_ilmb_cntlr_DIN(9),
-      dinb(21) => microblaze_0_ilmb_cntlr_DIN(10),
-      dinb(20) => microblaze_0_ilmb_cntlr_DIN(11),
-      dinb(19) => microblaze_0_ilmb_cntlr_DIN(12),
-      dinb(18) => microblaze_0_ilmb_cntlr_DIN(13),
-      dinb(17) => microblaze_0_ilmb_cntlr_DIN(14),
-      dinb(16) => microblaze_0_ilmb_cntlr_DIN(15),
-      dinb(15) => microblaze_0_ilmb_cntlr_DIN(16),
-      dinb(14) => microblaze_0_ilmb_cntlr_DIN(17),
-      dinb(13) => microblaze_0_ilmb_cntlr_DIN(18),
-      dinb(12) => microblaze_0_ilmb_cntlr_DIN(19),
-      dinb(11) => microblaze_0_ilmb_cntlr_DIN(20),
-      dinb(10) => microblaze_0_ilmb_cntlr_DIN(21),
-      dinb(9) => microblaze_0_ilmb_cntlr_DIN(22),
-      dinb(8) => microblaze_0_ilmb_cntlr_DIN(23),
-      dinb(7) => microblaze_0_ilmb_cntlr_DIN(24),
-      dinb(6) => microblaze_0_ilmb_cntlr_DIN(25),
-      dinb(5) => microblaze_0_ilmb_cntlr_DIN(26),
-      dinb(4) => microblaze_0_ilmb_cntlr_DIN(27),
-      dinb(3) => microblaze_0_ilmb_cntlr_DIN(28),
-      dinb(2) => microblaze_0_ilmb_cntlr_DIN(29),
-      dinb(1) => microblaze_0_ilmb_cntlr_DIN(30),
-      dinb(0) => microblaze_0_ilmb_cntlr_DIN(31),
       douta(31 downto 0) => microblaze_0_dlmb_cntlr_DOUT(31 downto 0),
-      doutb(31 downto 0) => microblaze_0_ilmb_cntlr_DOUT(31 downto 0),
       ena => microblaze_0_dlmb_cntlr_EN,
-      enb => microblaze_0_ilmb_cntlr_EN,
       rsta => microblaze_0_dlmb_cntlr_RST,
-      rstb => microblaze_0_ilmb_cntlr_RST,
       wea(3) => microblaze_0_dlmb_cntlr_WE(0),
       wea(2) => microblaze_0_dlmb_cntlr_WE(1),
       wea(1) => microblaze_0_dlmb_cntlr_WE(2),
-      wea(0) => microblaze_0_dlmb_cntlr_WE(3),
-      web(3) => microblaze_0_ilmb_cntlr_WE(0),
-      web(2) => microblaze_0_ilmb_cntlr_WE(1),
-      web(1) => microblaze_0_ilmb_cntlr_WE(2),
-      web(0) => microblaze_0_ilmb_cntlr_WE(3)
+      wea(0) => microblaze_0_dlmb_cntlr_WE(3)
+    );
+lmb_bram1: component design_1_lmb_bram_1
+     port map (
+      addra(31) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(0),
+      addra(30) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(1),
+      addra(29) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(2),
+      addra(28) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(3),
+      addra(27) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(4),
+      addra(26) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(5),
+      addra(25) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(6),
+      addra(24) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(7),
+      addra(23) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(8),
+      addra(22) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(9),
+      addra(21) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(10),
+      addra(20) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(11),
+      addra(19) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(12),
+      addra(18) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(13),
+      addra(17) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(14),
+      addra(16) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(15),
+      addra(15) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(16),
+      addra(14) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(17),
+      addra(13) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(18),
+      addra(12) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(19),
+      addra(11) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(20),
+      addra(10) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(21),
+      addra(9) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(22),
+      addra(8) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(23),
+      addra(7) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(24),
+      addra(6) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(25),
+      addra(5) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(26),
+      addra(4) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(27),
+      addra(3) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(28),
+      addra(2) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(29),
+      addra(1) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(30),
+      addra(0) => ilmb_bram_if_cntlr_BRAM_PORT_ADDR(31),
+      clka => ilmb_bram_if_cntlr_BRAM_PORT_CLK,
+      dina(31) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(0),
+      dina(30) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(1),
+      dina(29) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(2),
+      dina(28) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(3),
+      dina(27) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(4),
+      dina(26) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(5),
+      dina(25) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(6),
+      dina(24) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(7),
+      dina(23) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(8),
+      dina(22) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(9),
+      dina(21) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(10),
+      dina(20) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(11),
+      dina(19) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(12),
+      dina(18) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(13),
+      dina(17) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(14),
+      dina(16) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(15),
+      dina(15) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(16),
+      dina(14) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(17),
+      dina(13) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(18),
+      dina(12) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(19),
+      dina(11) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(20),
+      dina(10) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(21),
+      dina(9) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(22),
+      dina(8) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(23),
+      dina(7) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(24),
+      dina(6) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(25),
+      dina(5) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(26),
+      dina(4) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(27),
+      dina(3) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(28),
+      dina(2) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(29),
+      dina(1) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(30),
+      dina(0) => ilmb_bram_if_cntlr_BRAM_PORT_DIN(31),
+      douta(31 downto 0) => ilmb_bram_if_cntlr_BRAM_PORT_DOUT(31 downto 0),
+      ena => ilmb_bram_if_cntlr_BRAM_PORT_EN,
+      rsta => ilmb_bram_if_cntlr_BRAM_PORT_RST,
+      wea(3) => ilmb_bram_if_cntlr_BRAM_PORT_WE(0),
+      wea(2) => ilmb_bram_if_cntlr_BRAM_PORT_WE(1),
+      wea(1) => ilmb_bram_if_cntlr_BRAM_PORT_WE(2),
+      wea(0) => ilmb_bram_if_cntlr_BRAM_PORT_WE(3)
+    );
+lmb_bram2: component design_1_lmb_bram_2
+     port map (
+      addra(31) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(0),
+      addra(30) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(1),
+      addra(29) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(2),
+      addra(28) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(3),
+      addra(27) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(4),
+      addra(26) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(5),
+      addra(25) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(6),
+      addra(24) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(7),
+      addra(23) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(8),
+      addra(22) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(9),
+      addra(21) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(10),
+      addra(20) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(11),
+      addra(19) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(12),
+      addra(18) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(13),
+      addra(17) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(14),
+      addra(16) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(15),
+      addra(15) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(16),
+      addra(14) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(17),
+      addra(13) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(18),
+      addra(12) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(19),
+      addra(11) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(20),
+      addra(10) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(21),
+      addra(9) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(22),
+      addra(8) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(23),
+      addra(7) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(24),
+      addra(6) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(25),
+      addra(5) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(26),
+      addra(4) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(27),
+      addra(3) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(28),
+      addra(2) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(29),
+      addra(1) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(30),
+      addra(0) => dlmb_bram_if_cntlr1_BRAM_PORT_ADDR(31),
+      clka => dlmb_bram_if_cntlr1_BRAM_PORT_CLK,
+      dina(31) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(0),
+      dina(30) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(1),
+      dina(29) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(2),
+      dina(28) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(3),
+      dina(27) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(4),
+      dina(26) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(5),
+      dina(25) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(6),
+      dina(24) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(7),
+      dina(23) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(8),
+      dina(22) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(9),
+      dina(21) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(10),
+      dina(20) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(11),
+      dina(19) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(12),
+      dina(18) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(13),
+      dina(17) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(14),
+      dina(16) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(15),
+      dina(15) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(16),
+      dina(14) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(17),
+      dina(13) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(18),
+      dina(12) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(19),
+      dina(11) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(20),
+      dina(10) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(21),
+      dina(9) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(22),
+      dina(8) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(23),
+      dina(7) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(24),
+      dina(6) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(25),
+      dina(5) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(26),
+      dina(4) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(27),
+      dina(3) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(28),
+      dina(2) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(29),
+      dina(1) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(30),
+      dina(0) => dlmb_bram_if_cntlr1_BRAM_PORT_DIN(31),
+      douta(31 downto 0) => dlmb_bram_if_cntlr1_BRAM_PORT_DOUT(31 downto 0),
+      ena => dlmb_bram_if_cntlr1_BRAM_PORT_EN,
+      rsta => dlmb_bram_if_cntlr1_BRAM_PORT_RST,
+      wea(3) => dlmb_bram_if_cntlr1_BRAM_PORT_WE(0),
+      wea(2) => dlmb_bram_if_cntlr1_BRAM_PORT_WE(1),
+      wea(1) => dlmb_bram_if_cntlr1_BRAM_PORT_WE(2),
+      wea(0) => dlmb_bram_if_cntlr1_BRAM_PORT_WE(3)
+    );
+lmb_bram3: component design_1_lmb_bram1_0
+     port map (
+      addra(31) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(0),
+      addra(30) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(1),
+      addra(29) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(2),
+      addra(28) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(3),
+      addra(27) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(4),
+      addra(26) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(5),
+      addra(25) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(6),
+      addra(24) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(7),
+      addra(23) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(8),
+      addra(22) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(9),
+      addra(21) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(10),
+      addra(20) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(11),
+      addra(19) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(12),
+      addra(18) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(13),
+      addra(17) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(14),
+      addra(16) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(15),
+      addra(15) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(16),
+      addra(14) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(17),
+      addra(13) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(18),
+      addra(12) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(19),
+      addra(11) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(20),
+      addra(10) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(21),
+      addra(9) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(22),
+      addra(8) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(23),
+      addra(7) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(24),
+      addra(6) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(25),
+      addra(5) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(26),
+      addra(4) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(27),
+      addra(3) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(28),
+      addra(2) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(29),
+      addra(1) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(30),
+      addra(0) => ilmb_bram_if_cntlr1_BRAM_PORT_ADDR(31),
+      clka => ilmb_bram_if_cntlr1_BRAM_PORT_CLK,
+      dina(31) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(0),
+      dina(30) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(1),
+      dina(29) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(2),
+      dina(28) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(3),
+      dina(27) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(4),
+      dina(26) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(5),
+      dina(25) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(6),
+      dina(24) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(7),
+      dina(23) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(8),
+      dina(22) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(9),
+      dina(21) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(10),
+      dina(20) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(11),
+      dina(19) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(12),
+      dina(18) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(13),
+      dina(17) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(14),
+      dina(16) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(15),
+      dina(15) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(16),
+      dina(14) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(17),
+      dina(13) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(18),
+      dina(12) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(19),
+      dina(11) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(20),
+      dina(10) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(21),
+      dina(9) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(22),
+      dina(8) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(23),
+      dina(7) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(24),
+      dina(6) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(25),
+      dina(5) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(26),
+      dina(4) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(27),
+      dina(3) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(28),
+      dina(2) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(29),
+      dina(1) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(30),
+      dina(0) => ilmb_bram_if_cntlr1_BRAM_PORT_DIN(31),
+      douta(31 downto 0) => ilmb_bram_if_cntlr1_BRAM_PORT_DOUT(31 downto 0),
+      ena => ilmb_bram_if_cntlr1_BRAM_PORT_EN,
+      rsta => ilmb_bram_if_cntlr1_BRAM_PORT_RST,
+      wea(3) => ilmb_bram_if_cntlr1_BRAM_PORT_WE(0),
+      wea(2) => ilmb_bram_if_cntlr1_BRAM_PORT_WE(1),
+      wea(1) => ilmb_bram_if_cntlr1_BRAM_PORT_WE(2),
+      wea(0) => ilmb_bram_if_cntlr1_BRAM_PORT_WE(3)
+    );
+lmb_bram4: component design_1_lmb_bram3_0
+     port map (
+      addra(31) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(0),
+      addra(30) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(1),
+      addra(29) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(2),
+      addra(28) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(3),
+      addra(27) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(4),
+      addra(26) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(5),
+      addra(25) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(6),
+      addra(24) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(7),
+      addra(23) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(8),
+      addra(22) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(9),
+      addra(21) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(10),
+      addra(20) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(11),
+      addra(19) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(12),
+      addra(18) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(13),
+      addra(17) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(14),
+      addra(16) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(15),
+      addra(15) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(16),
+      addra(14) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(17),
+      addra(13) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(18),
+      addra(12) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(19),
+      addra(11) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(20),
+      addra(10) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(21),
+      addra(9) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(22),
+      addra(8) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(23),
+      addra(7) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(24),
+      addra(6) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(25),
+      addra(5) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(26),
+      addra(4) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(27),
+      addra(3) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(28),
+      addra(2) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(29),
+      addra(1) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(30),
+      addra(0) => ilmb_bram_if_cntlr2_BRAM_PORT_ADDR(31),
+      clka => ilmb_bram_if_cntlr2_BRAM_PORT_CLK,
+      dina(31) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(0),
+      dina(30) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(1),
+      dina(29) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(2),
+      dina(28) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(3),
+      dina(27) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(4),
+      dina(26) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(5),
+      dina(25) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(6),
+      dina(24) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(7),
+      dina(23) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(8),
+      dina(22) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(9),
+      dina(21) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(10),
+      dina(20) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(11),
+      dina(19) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(12),
+      dina(18) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(13),
+      dina(17) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(14),
+      dina(16) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(15),
+      dina(15) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(16),
+      dina(14) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(17),
+      dina(13) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(18),
+      dina(12) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(19),
+      dina(11) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(20),
+      dina(10) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(21),
+      dina(9) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(22),
+      dina(8) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(23),
+      dina(7) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(24),
+      dina(6) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(25),
+      dina(5) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(26),
+      dina(4) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(27),
+      dina(3) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(28),
+      dina(2) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(29),
+      dina(1) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(30),
+      dina(0) => ilmb_bram_if_cntlr2_BRAM_PORT_DIN(31),
+      douta(31 downto 0) => ilmb_bram_if_cntlr2_BRAM_PORT_DOUT(31 downto 0),
+      ena => ilmb_bram_if_cntlr2_BRAM_PORT_EN,
+      rsta => ilmb_bram_if_cntlr2_BRAM_PORT_RST,
+      wea(3) => ilmb_bram_if_cntlr2_BRAM_PORT_WE(0),
+      wea(2) => ilmb_bram_if_cntlr2_BRAM_PORT_WE(1),
+      wea(1) => ilmb_bram_if_cntlr2_BRAM_PORT_WE(2),
+      wea(0) => ilmb_bram_if_cntlr2_BRAM_PORT_WE(3)
+    );
+lmb_bram5: component design_1_lmb_bram3_1
+     port map (
+      addra(31) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(0),
+      addra(30) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(1),
+      addra(29) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(2),
+      addra(28) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(3),
+      addra(27) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(4),
+      addra(26) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(5),
+      addra(25) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(6),
+      addra(24) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(7),
+      addra(23) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(8),
+      addra(22) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(9),
+      addra(21) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(10),
+      addra(20) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(11),
+      addra(19) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(12),
+      addra(18) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(13),
+      addra(17) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(14),
+      addra(16) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(15),
+      addra(15) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(16),
+      addra(14) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(17),
+      addra(13) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(18),
+      addra(12) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(19),
+      addra(11) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(20),
+      addra(10) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(21),
+      addra(9) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(22),
+      addra(8) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(23),
+      addra(7) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(24),
+      addra(6) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(25),
+      addra(5) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(26),
+      addra(4) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(27),
+      addra(3) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(28),
+      addra(2) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(29),
+      addra(1) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(30),
+      addra(0) => ilmb_bram_if_cntlr3_BRAM_PORT_ADDR(31),
+      clka => ilmb_bram_if_cntlr3_BRAM_PORT_CLK,
+      dina(31) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(0),
+      dina(30) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(1),
+      dina(29) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(2),
+      dina(28) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(3),
+      dina(27) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(4),
+      dina(26) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(5),
+      dina(25) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(6),
+      dina(24) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(7),
+      dina(23) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(8),
+      dina(22) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(9),
+      dina(21) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(10),
+      dina(20) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(11),
+      dina(19) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(12),
+      dina(18) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(13),
+      dina(17) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(14),
+      dina(16) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(15),
+      dina(15) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(16),
+      dina(14) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(17),
+      dina(13) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(18),
+      dina(12) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(19),
+      dina(11) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(20),
+      dina(10) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(21),
+      dina(9) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(22),
+      dina(8) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(23),
+      dina(7) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(24),
+      dina(6) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(25),
+      dina(5) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(26),
+      dina(4) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(27),
+      dina(3) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(28),
+      dina(2) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(29),
+      dina(1) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(30),
+      dina(0) => ilmb_bram_if_cntlr3_BRAM_PORT_DIN(31),
+      douta(31 downto 0) => ilmb_bram_if_cntlr3_BRAM_PORT_DOUT(31 downto 0),
+      ena => ilmb_bram_if_cntlr3_BRAM_PORT_EN,
+      rsta => ilmb_bram_if_cntlr3_BRAM_PORT_RST,
+      wea(3) => ilmb_bram_if_cntlr3_BRAM_PORT_WE(0),
+      wea(2) => ilmb_bram_if_cntlr3_BRAM_PORT_WE(1),
+      wea(1) => ilmb_bram_if_cntlr3_BRAM_PORT_WE(2),
+      wea(0) => ilmb_bram_if_cntlr3_BRAM_PORT_WE(3)
     );
 end STRUCTURE;
 library IEEE;
@@ -3434,16 +4175,15 @@ entity design_1 is
     psram_rtl_oen : out STD_LOGIC;
     psram_rtl_wen : out STD_LOGIC;
     reset : in STD_LOGIC;
-    reset_0 : in STD_LOGIC;
     resetn : in STD_LOGIC;
     sys_clock : in STD_LOGIC;
     usb_uart_rxd : in STD_LOGIC;
     usb_uart_txd : out STD_LOGIC
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of design_1 : entity is "design_1,IP_Integrator,{x_ipProduct=Vivado 2015.1,x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=31,numReposBlks=20,numNonXlnxBlks=1,numHierBlks=11,maxHierDepth=1,da_axi4_cnt=6,da_board_cnt=12,da_mb_cnt=1,synth_mode=Global}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of design_1 : entity is "design_1.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipProduct=Vivado 2015.1,x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=41,numReposBlks=30,numNonXlnxBlks=1,numHierBlks=11,maxHierDepth=1,da_axi4_cnt=6,da_board_cnt=12,da_mb_cnt=1,synth_mode=Global}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
 
 architecture STRUCTURE of design_1 is
@@ -3836,6 +4576,50 @@ architecture STRUCTURE of design_1 is
     s_axi_rready : in STD_LOGIC
   );
   end component design_1_axi_timer_0_0;
+  component design_1_ila_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe1 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 23 downto 0 );
+    probe6 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe7 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe8 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe9 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe10 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe11 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe12 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe13 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe14 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe15 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe16 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe17 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe18 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe19 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe20 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe21 : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    probe23 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe24 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe25 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe26 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe28 : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    probe29 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    probe30 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe31 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe32 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe33 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe34 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe36 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe37 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    probe38 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe41 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe43 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe27 : in STD_LOGIC_VECTOR ( 7 downto 0 )
+  );
+  end component design_1_ila_0_0;
   signal GND_1 : STD_LOGIC;
   signal VCC_1 : STD_LOGIC;
   signal axi_ethernetlite_0_MDIO_MDC : STD_LOGIC;
@@ -4105,7 +4889,6 @@ architecture STRUCTURE of design_1 is
   signal psram_ip_0_psram_rtl_DQ_T : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal psram_ip_0_psram_rtl_OEN : STD_LOGIC;
   signal psram_ip_0_psram_rtl_WEN : STD_LOGIC;
-  signal reset_0_1 : STD_LOGIC;
   signal reset_1 : STD_LOGIC;
   signal resetn_1 : STD_LOGIC;
   signal rst_clk_wiz_1_100M_bus_struct_reset : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -4124,10 +4907,10 @@ architecture STRUCTURE of design_1 is
   signal NLW_psram_ip_0_s00_axi_buser_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_psram_ip_0_s00_axi_ruser_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_clk_wiz_1_100M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute BMM_INFO_PROCESSOR : string;
+  attribute BMM_INFO_PROCESSOR of microblaze_0 : label is "microblaze-le > design_1 microblaze_0_local_memory/ilmb_bram_if_cntlr design_1 microblaze_0_local_memory/ilmb_bram_if_cntlr1 design_1 microblaze_0_local_memory/ilmb_bram_if_cntlr2 design_1 microblaze_0_local_memory/ilmb_bram_if_cntlr3 design_1 microblaze_0_local_memory/dlmb_bram_if_cntlr design_1 microblaze_0_local_memory/dlmb_bram_if_cntlr1";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of microblaze_0 : label is "yes";
-  attribute bmm_info_processor : string;
-  attribute bmm_info_processor of microblaze_0 : label is "microblaze-le > design_1 microblaze_0_local_memory/dlmb_bram_if_cntlr";
 begin
   axi_ethernetlite_0_MDIO_MDIO_I <= eth_mdio_mdc_mdio_i;
   axi_uartlite_0_UART_RxD <= usb_uart_rxd;
@@ -4151,7 +4934,6 @@ begin
   psram_rtl_dq_t(15 downto 0) <= psram_ip_0_psram_rtl_DQ_T(15 downto 0);
   psram_rtl_oen <= psram_ip_0_psram_rtl_OEN;
   psram_rtl_wen <= psram_ip_0_psram_rtl_WEN;
-  reset_0_1 <= reset_0;
   reset_1 <= reset;
   resetn_1 <= resetn;
   sys_clock_1 <= sys_clock;
@@ -4387,6 +5169,49 @@ clk_wiz_1: component design_1_clk_wiz_1_0
       clk_out3 => clk_wiz_1_clk_out3,
       locked => clk_wiz_1_locked,
       resetn => util_vector_logic_1_Res(0)
+    );
+ila_0: component design_1_ila_0_0
+     port map (
+      clk => microblaze_0_Clk,
+      probe0(0) => axi_mem_intercon_M00_AXI_WREADY,
+      probe1(23 downto 0) => axi_mem_intercon_M00_AXI_AWADDR(23 downto 0),
+      probe10(31 downto 0) => axi_mem_intercon_M00_AXI_RDATA(31 downto 0),
+      probe11(0) => axi_mem_intercon_M00_AXI_AWVALID(0),
+      probe12(0) => axi_mem_intercon_M00_AXI_AWREADY,
+      probe13(1 downto 0) => axi_mem_intercon_M00_AXI_RRESP(1 downto 0),
+      probe14(31 downto 0) => axi_mem_intercon_M00_AXI_WDATA(31 downto 0),
+      probe15(3 downto 0) => axi_mem_intercon_M00_AXI_WSTRB(3 downto 0),
+      probe16(0) => axi_mem_intercon_M00_AXI_RVALID,
+      probe17(2 downto 0) => axi_mem_intercon_M00_AXI_ARPROT(2 downto 0),
+      probe18(2 downto 0) => axi_mem_intercon_M00_AXI_AWPROT(2 downto 0),
+      probe19(0) => axi_mem_intercon_M00_AXI_AWID(0),
+      probe2(1 downto 0) => axi_mem_intercon_M00_AXI_BRESP(1 downto 0),
+      probe20(0) => axi_mem_intercon_M00_AXI_BID(0),
+      probe21(7 downto 0) => axi_mem_intercon_M00_AXI_AWLEN(7 downto 0),
+      probe23(2 downto 0) => axi_mem_intercon_M00_AXI_AWSIZE(2 downto 0),
+      probe24(1 downto 0) => axi_mem_intercon_M00_AXI_AWBURST(1 downto 0),
+      probe25(0) => axi_mem_intercon_M00_AXI_ARID(0),
+      probe26(0) => axi_mem_intercon_M00_AXI_AWLOCK(0),
+      probe27(7 downto 0) => axi_mem_intercon_M00_AXI_ARLEN(7 downto 0),
+      probe28(2 downto 0) => axi_mem_intercon_M00_AXI_ARSIZE(2 downto 0),
+      probe29(1 downto 0) => axi_mem_intercon_M00_AXI_ARBURST(1 downto 0),
+      probe3(0) => axi_mem_intercon_M00_AXI_BVALID,
+      probe30(0) => axi_mem_intercon_M00_AXI_ARLOCK(0),
+      probe31(3 downto 0) => axi_mem_intercon_M00_AXI_ARCACHE(3 downto 0),
+      probe32(3 downto 0) => axi_mem_intercon_M00_AXI_AWCACHE(3 downto 0),
+      probe33(3 downto 0) => axi_mem_intercon_M00_AXI_ARREGION(3 downto 0),
+      probe34(3 downto 0) => axi_mem_intercon_M00_AXI_ARQOS(3 downto 0),
+      probe36(3 downto 0) => axi_mem_intercon_M00_AXI_AWREGION(3 downto 0),
+      probe37(3 downto 0) => axi_mem_intercon_M00_AXI_AWQOS(3 downto 0),
+      probe38(0) => axi_mem_intercon_M00_AXI_RID(0),
+      probe4(0) => axi_mem_intercon_M00_AXI_BREADY(0),
+      probe41(0) => axi_mem_intercon_M00_AXI_RLAST,
+      probe43(0) => axi_mem_intercon_M00_AXI_WLAST(0),
+      probe5(23 downto 0) => axi_mem_intercon_M00_AXI_ARADDR(23 downto 0),
+      probe6(0) => axi_mem_intercon_M00_AXI_RREADY(0),
+      probe7(0) => axi_mem_intercon_M00_AXI_WVALID(0),
+      probe8(0) => axi_mem_intercon_M00_AXI_ARVALID(0),
+      probe9(0) => axi_mem_intercon_M00_AXI_ARREADY
     );
 mdm_1: component design_1_mdm_1_0
      port map (
@@ -4738,7 +5563,7 @@ mii_to_rmii_0: component design_1_mii_to_rmii_0_0
       rmii2mac_tx_clk => axi_ethernetlite_0_MII_TX_CLK,
       rmii2phy_tx_en => mii_to_rmii_0_RMII_PHY_M_TX_EN,
       rmii2phy_txd(1 downto 0) => mii_to_rmii_0_RMII_PHY_M_TXD(1 downto 0),
-      rst_n => reset_0_1
+      rst_n => util_vector_logic_0_Res(0)
     );
 psram_ip_0: component design_1_psram_ip_0_0
      port map (

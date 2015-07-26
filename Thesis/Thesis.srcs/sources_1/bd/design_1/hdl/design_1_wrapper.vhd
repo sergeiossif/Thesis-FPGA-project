@@ -1,7 +1,7 @@
 --Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2015.1 (win64) Build 1215546 Mon Apr 27 19:22:08 MDT 2015
---Date        : Wed Jul 22 17:57:06 2015
+--Date        : Sun Jul 26 19:00:57 2015
 --Host        : Thi3fLaptop running 64-bit major release  (build 9200)
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
@@ -31,7 +31,6 @@ entity design_1_wrapper is
     psram_rtl_oen : out STD_LOGIC;
     psram_rtl_wen : out STD_LOGIC;
     reset : in STD_LOGIC;
-    reset_0 : in STD_LOGIC;
     resetn : in STD_LOGIC;
     sys_clock : in STD_LOGIC;
     usb_uart_rxd : in STD_LOGIC;
@@ -54,10 +53,6 @@ architecture STRUCTURE of design_1_wrapper is
     psram_rtl_cre : out STD_LOGIC;
     usb_uart_rxd : in STD_LOGIC;
     usb_uart_txd : out STD_LOGIC;
-    processor_clk : out STD_LOGIC;
-    sys_clock : in STD_LOGIC;
-    resetn : in STD_LOGIC;
-    reset : in STD_LOGIC;
     eth_mdio_mdc_mdc : out STD_LOGIC;
     eth_mdio_mdc_mdio_i : in STD_LOGIC;
     eth_mdio_mdc_mdio_o : out STD_LOGIC;
@@ -67,7 +62,10 @@ architecture STRUCTURE of design_1_wrapper is
     eth_rmii_rxd : in STD_LOGIC_VECTOR ( 1 downto 0 );
     eth_rmii_tx_en : out STD_LOGIC;
     eth_rmii_txd : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    reset_0 : in STD_LOGIC;
+    processor_clk : out STD_LOGIC;
+    sys_clock : in STD_LOGIC;
+    resetn : in STD_LOGIC;
+    reset : in STD_LOGIC;
     eth_ref_clk : out STD_LOGIC
   );
   end component design_1;
@@ -216,7 +214,6 @@ design_1_i: component design_1
       psram_rtl_oen => psram_rtl_oen,
       psram_rtl_wen => psram_rtl_wen,
       reset => reset,
-      reset_0 => reset_0,
       resetn => resetn,
       sys_clock => sys_clock,
       usb_uart_rxd => usb_uart_rxd,

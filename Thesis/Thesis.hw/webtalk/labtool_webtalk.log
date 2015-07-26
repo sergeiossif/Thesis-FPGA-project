@@ -4,7 +4,6 @@
   **** IP Build 1209967 on Tue Apr 21 11:39:20 MDT 2015
     ** Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 
-source E:/Thesis/Thesis.hw/webtalk/labtool_webtalk.tcl -notrace
-INFO: [Common 17-186] 'E:/Thesis/Thesis.hw/webtalk/usage_statistics_ext_labtool.xml' has been successfully sent to Xilinx on Mon Jul 20 01:20:13 2015. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2015.1/doc/webtalk_introduction.html.
-webtalk_transmit: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 62.930 ; gain = 0.148
-INFO: [Common 17-206] Exiting Webtalk at Mon Jul 20 01:20:13 2015...
+source E:/Thesis/Thesis-FPGA-project/Thesis/Thesis.hw/webtalk/labtool_webtalk.tcl -notrace
+INFO: [Common 17-186] 'E:/Thesis/Thesis-FPGA-project/Thesis/Thesis.hw/webtalk/usage_statistics_ext_labtool.xml' has been successfully sent to Xilinx on Sun Jul 26 13:19:45 2015. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2015.1/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Sun Jul 26 13:19:45 2015...

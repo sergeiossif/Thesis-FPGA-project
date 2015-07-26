@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2015.1 (64-bit)
+# SW Build 1215546 on Mon Apr 27 19:22:08 MDT 2015
+# IP Build 1209967 on Tue Apr 21 11:39:20 MDT 2015
+# Start of session at: Sun Jul 26 13:05:44 2015
+# Process ID: 45652
+# Log file: E:/Thesis/Thesis-FPGA-project/Thesis/Thesis.runs/impl_1/design_1_wrapper.vdi
+# Journal file: E:/Thesis/Thesis-FPGA-project/Thesis/Thesis.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace
+Command: open_checkpoint design_1_wrapper_routed.dcp
+INFO: [Netlist 29-17] Analyzing 379 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2015.1
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [E:/Thesis/Thesis-FPGA-project/Thesis/Thesis.runs/impl_1/.Xil/Vivado-45652-Thi3fLaptop/dcp/design_1_wrapper_early.xdc]

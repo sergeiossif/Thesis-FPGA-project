@@ -1,11 +1,46 @@
 WORKFLOW_OPERATION simulation,dialog;
 
-DEFINE_MEMORY_TYPE microblaze_0_local_memory_lmb_bram_MEM_DEVICE [0x00008000] 32;
+DEFINE_MEMORY_TYPE microblaze_0_local_memory_lmb_bram1_MEM_DEVICE [0x00010000] 32;
+DEFINE_MEMORY_TYPE microblaze_0_local_memory_lmb_bram3_MEM_DEVICE [0x00010000] 32;
+DEFINE_MEMORY_TYPE microblaze_0_local_memory_lmb_bram4_MEM_DEVICE [0x00010000] 32;
+DEFINE_MEMORY_TYPE microblaze_0_local_memory_lmb_bram5_MEM_DEVICE [0x00010000] 32;
+DEFINE_MEMORY_TYPE microblaze_0_local_memory_lmb_bram_MEM_DEVICE [0x00010000] 32;
+DEFINE_MEMORY_TYPE microblaze_0_local_memory_lmb_bram2_MEM_DEVICE [0x00008000] 32;
 
 ADDRESS_MAP microblaze_0 MICROBLAZE-LE 100 microblaze_0
-   ADDRESS_SPACE microblaze_0_local_memory_lmb_bram_ADDR_SPACE microblaze_0_local_memory_lmb_bram_MEM_DEVICE  [0x00000000:0x00007fff] microblaze_0_local_memory/dlmb_bram_if_cntlr
+   ADDRESS_SPACE microblaze_0_local_memory_lmb_bram1_ADDR_SPACE microblaze_0_local_memory_lmb_bram1_MEM_DEVICE  [0x00000000:0x0000ffff] microblaze_0_local_memory/ilmb_bram_if_cntlr
+      BUS_BLOCK
+      microblaze_0_local_memory_lmb_bram1_BUS_BLK [31:0] INPUT = "design_1_lmb_bram_1.mem";
+      
+      END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE microblaze_0_local_memory_lmb_bram3_ADDR_SPACE microblaze_0_local_memory_lmb_bram3_MEM_DEVICE  [0x00010000:0x0001ffff] microblaze_0_local_memory/ilmb_bram_if_cntlr1
+      BUS_BLOCK
+      microblaze_0_local_memory_lmb_bram3_BUS_BLK [31:0] INPUT = "design_1_lmb_bram1_0.mem";
+      
+      END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE microblaze_0_local_memory_lmb_bram4_ADDR_SPACE microblaze_0_local_memory_lmb_bram4_MEM_DEVICE  [0x00020000:0x0002ffff] microblaze_0_local_memory/ilmb_bram_if_cntlr2
+      BUS_BLOCK
+      microblaze_0_local_memory_lmb_bram4_BUS_BLK [31:0] INPUT = "design_1_lmb_bram3_0.mem";
+      
+      END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE microblaze_0_local_memory_lmb_bram5_ADDR_SPACE microblaze_0_local_memory_lmb_bram5_MEM_DEVICE  [0x00030000:0x0003ffff] microblaze_0_local_memory/ilmb_bram_if_cntlr3
+      BUS_BLOCK
+      microblaze_0_local_memory_lmb_bram5_BUS_BLK [31:0] INPUT = "design_1_lmb_bram3_1.mem";
+      
+      END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE microblaze_0_local_memory_lmb_bram_ADDR_SPACE microblaze_0_local_memory_lmb_bram_MEM_DEVICE  [0x00040000:0x0004ffff] microblaze_0_local_memory/dlmb_bram_if_cntlr
       BUS_BLOCK
       microblaze_0_local_memory_lmb_bram_BUS_BLK [31:0] INPUT = "design_1_lmb_bram_0.mem";
+      
+      END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE microblaze_0_local_memory_lmb_bram2_ADDR_SPACE microblaze_0_local_memory_lmb_bram2_MEM_DEVICE  [0x00050000:0x00057fff] microblaze_0_local_memory/dlmb_bram_if_cntlr1
+      BUS_BLOCK
+      microblaze_0_local_memory_lmb_bram2_BUS_BLK [31:0] INPUT = "design_1_lmb_bram_2.mem";
       
       END_BUS_BLOCK;
    END_ADDRESS_SPACE;

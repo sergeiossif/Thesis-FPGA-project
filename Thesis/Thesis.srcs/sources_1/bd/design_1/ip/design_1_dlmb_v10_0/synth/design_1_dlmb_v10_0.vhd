@@ -67,11 +67,11 @@ ENTITY design_1_dlmb_v10_0 IS
     M_AddrStrobe : IN STD_LOGIC;
     M_DBus : IN STD_LOGIC_VECTOR(0 TO 31);
     M_BE : IN STD_LOGIC_VECTOR(0 TO 3);
-    Sl_DBus : IN STD_LOGIC_VECTOR(0 TO 31);
-    Sl_Ready : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    Sl_Wait : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    Sl_UE : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    Sl_CE : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    Sl_DBus : IN STD_LOGIC_VECTOR(0 TO 63);
+    Sl_Ready : IN STD_LOGIC_VECTOR(0 TO 1);
+    Sl_Wait : IN STD_LOGIC_VECTOR(0 TO 1);
+    Sl_UE : IN STD_LOGIC_VECTOR(0 TO 1);
+    Sl_CE : IN STD_LOGIC_VECTOR(0 TO 1);
     LMB_ABus : OUT STD_LOGIC_VECTOR(0 TO 31);
     LMB_ReadStrobe : OUT STD_LOGIC;
     LMB_WriteStrobe : OUT STD_LOGIC;
@@ -107,11 +107,11 @@ ARCHITECTURE design_1_dlmb_v10_0_arch OF design_1_dlmb_v10_0 IS
       M_AddrStrobe : IN STD_LOGIC;
       M_DBus : IN STD_LOGIC_VECTOR(0 TO 31);
       M_BE : IN STD_LOGIC_VECTOR(0 TO 3);
-      Sl_DBus : IN STD_LOGIC_VECTOR(0 TO 31);
-      Sl_Ready : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      Sl_Wait : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      Sl_UE : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-      Sl_CE : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      Sl_DBus : IN STD_LOGIC_VECTOR(0 TO 63);
+      Sl_Ready : IN STD_LOGIC_VECTOR(0 TO 1);
+      Sl_Wait : IN STD_LOGIC_VECTOR(0 TO 1);
+      Sl_UE : IN STD_LOGIC_VECTOR(0 TO 1);
+      Sl_CE : IN STD_LOGIC_VECTOR(0 TO 1);
       LMB_ABus : OUT STD_LOGIC_VECTOR(0 TO 31);
       LMB_ReadStrobe : OUT STD_LOGIC;
       LMB_WriteStrobe : OUT STD_LOGIC;
@@ -130,37 +130,37 @@ ARCHITECTURE design_1_dlmb_v10_0_arch OF design_1_dlmb_v10_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF design_1_dlmb_v10_0_arch : ARCHITECTURE IS "design_1_dlmb_v10_0,lmb_v10,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF design_1_dlmb_v10_0_arch: ARCHITECTURE IS "design_1_dlmb_v10_0,lmb_v10,{x_ipProduct=Vivado 2015.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=lmb_v10,x_ipVersion=3.0,x_ipCoreRevision=6,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_LMB_NUM_SLAVES=1,C_LMB_DWIDTH=32,C_LMB_AWIDTH=32,C_EXT_RESET_HIGH=1}";
+  ATTRIBUTE CORE_GENERATION_INFO OF design_1_dlmb_v10_0_arch: ARCHITECTURE IS "design_1_dlmb_v10_0,lmb_v10,{x_ipProduct=Vivado 2015.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=lmb_v10,x_ipVersion=3.0,x_ipCoreRevision=6,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_LMB_NUM_SLAVES=2,C_LMB_DWIDTH=32,C_LMB_AWIDTH=32,C_EXT_RESET_HIGH=1}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF LMB_Clk: SIGNAL IS "xilinx.com:signal:clock:1.0 CLK.LMB_Clk CLK";
   ATTRIBUTE X_INTERFACE_INFO OF SYS_Rst: SIGNAL IS "xilinx.com:signal:reset:1.0 RST.SYS_Rst RST";
-  ATTRIBUTE X_INTERFACE_INFO OF LMB_Rst: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 RST, xilinx.com:interface:lmb:1.0 LMB_M RST";
+  ATTRIBUTE X_INTERFACE_INFO OF LMB_Rst: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 RST, xilinx.com:interface:lmb:1.0 LMB_Sl_1 RST, xilinx.com:interface:lmb:1.0 LMB_M RST";
   ATTRIBUTE X_INTERFACE_INFO OF M_ABus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M ABUS";
   ATTRIBUTE X_INTERFACE_INFO OF M_ReadStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M READSTROBE";
   ATTRIBUTE X_INTERFACE_INFO OF M_WriteStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M WRITESTROBE";
   ATTRIBUTE X_INTERFACE_INFO OF M_AddrStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M ADDRSTROBE";
   ATTRIBUTE X_INTERFACE_INFO OF M_DBus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M WRITEDBUS";
   ATTRIBUTE X_INTERFACE_INFO OF M_BE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M BE";
-  ATTRIBUTE X_INTERFACE_INFO OF Sl_DBus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 READDBUS";
-  ATTRIBUTE X_INTERFACE_INFO OF Sl_Ready: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 READY";
-  ATTRIBUTE X_INTERFACE_INFO OF Sl_Wait: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 WAIT";
-  ATTRIBUTE X_INTERFACE_INFO OF Sl_UE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 UE";
-  ATTRIBUTE X_INTERFACE_INFO OF Sl_CE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 CE";
-  ATTRIBUTE X_INTERFACE_INFO OF LMB_ABus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 ABUS";
-  ATTRIBUTE X_INTERFACE_INFO OF LMB_ReadStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 READSTROBE";
-  ATTRIBUTE X_INTERFACE_INFO OF LMB_WriteStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 WRITESTROBE";
-  ATTRIBUTE X_INTERFACE_INFO OF LMB_AddrStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 ADDRSTROBE";
+  ATTRIBUTE X_INTERFACE_INFO OF Sl_DBus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 READDBUS [0:31] [0:31], xilinx.com:interface:lmb:1.0 LMB_Sl_1 READDBUS [0:31] [32:63]";
+  ATTRIBUTE X_INTERFACE_INFO OF Sl_Ready: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 READY [0:0] [0:0], xilinx.com:interface:lmb:1.0 LMB_Sl_1 READY [0:0] [1:1]";
+  ATTRIBUTE X_INTERFACE_INFO OF Sl_Wait: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 WAIT [0:0] [0:0], xilinx.com:interface:lmb:1.0 LMB_Sl_1 WAIT [0:0] [1:1]";
+  ATTRIBUTE X_INTERFACE_INFO OF Sl_UE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 UE [0:0] [0:0], xilinx.com:interface:lmb:1.0 LMB_Sl_1 UE [0:0] [1:1]";
+  ATTRIBUTE X_INTERFACE_INFO OF Sl_CE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 CE [0:0] [0:0], xilinx.com:interface:lmb:1.0 LMB_Sl_1 CE [0:0] [1:1]";
+  ATTRIBUTE X_INTERFACE_INFO OF LMB_ABus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 ABUS, xilinx.com:interface:lmb:1.0 LMB_Sl_1 ABUS";
+  ATTRIBUTE X_INTERFACE_INFO OF LMB_ReadStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 READSTROBE, xilinx.com:interface:lmb:1.0 LMB_Sl_1 READSTROBE";
+  ATTRIBUTE X_INTERFACE_INFO OF LMB_WriteStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 WRITESTROBE, xilinx.com:interface:lmb:1.0 LMB_Sl_1 WRITESTROBE";
+  ATTRIBUTE X_INTERFACE_INFO OF LMB_AddrStrobe: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 ADDRSTROBE, xilinx.com:interface:lmb:1.0 LMB_Sl_1 ADDRSTROBE";
   ATTRIBUTE X_INTERFACE_INFO OF LMB_ReadDBus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M READDBUS";
-  ATTRIBUTE X_INTERFACE_INFO OF LMB_WriteDBus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 WRITEDBUS";
+  ATTRIBUTE X_INTERFACE_INFO OF LMB_WriteDBus: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 WRITEDBUS, xilinx.com:interface:lmb:1.0 LMB_Sl_1 WRITEDBUS";
   ATTRIBUTE X_INTERFACE_INFO OF LMB_Ready: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M READY";
   ATTRIBUTE X_INTERFACE_INFO OF LMB_Wait: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M WAIT";
   ATTRIBUTE X_INTERFACE_INFO OF LMB_UE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M UE";
   ATTRIBUTE X_INTERFACE_INFO OF LMB_CE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_M CE";
-  ATTRIBUTE X_INTERFACE_INFO OF LMB_BE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 BE";
+  ATTRIBUTE X_INTERFACE_INFO OF LMB_BE: SIGNAL IS "xilinx.com:interface:lmb:1.0 LMB_Sl_0 BE, xilinx.com:interface:lmb:1.0 LMB_Sl_1 BE";
 BEGIN
   U0 : lmb_v10
     GENERIC MAP (
-      C_LMB_NUM_SLAVES => 1,
+      C_LMB_NUM_SLAVES => 2,
       C_LMB_DWIDTH => 32,
       C_LMB_AWIDTH => 32,
       C_EXT_RESET_HIGH => 1
