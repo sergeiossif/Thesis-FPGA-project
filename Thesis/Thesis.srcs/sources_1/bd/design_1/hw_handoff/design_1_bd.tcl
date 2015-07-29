@@ -153,10 +153,6 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   create_bd_pin -dir I -type clk LMB_Clk
   create_bd_pin -dir I -from 0 -to 0 -type rst SYS_Rst
 
-  # Create instance: dlmb_bram_if_cntlr, and set properties
-  set dlmb_bram_if_cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 dlmb_bram_if_cntlr ]
-  set_property -dict [ list CONFIG.C_ECC {0}  ] $dlmb_bram_if_cntlr
-
   # Create instance: dlmb_bram_if_cntlr1, and set properties
   set dlmb_bram_if_cntlr1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 dlmb_bram_if_cntlr1 ]
   set_property -dict [ list CONFIG.C_ECC {0}  ] $dlmb_bram_if_cntlr1
@@ -169,65 +165,25 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   set ilmb_bram_if_cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 ilmb_bram_if_cntlr ]
   set_property -dict [ list CONFIG.C_ECC {0}  ] $ilmb_bram_if_cntlr
 
-  # Create instance: ilmb_bram_if_cntlr1, and set properties
-  set ilmb_bram_if_cntlr1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 ilmb_bram_if_cntlr1 ]
-  set_property -dict [ list CONFIG.C_ECC {0}  ] $ilmb_bram_if_cntlr1
-
-  # Create instance: ilmb_bram_if_cntlr2, and set properties
-  set ilmb_bram_if_cntlr2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 ilmb_bram_if_cntlr2 ]
-  set_property -dict [ list CONFIG.C_ECC {0}  ] $ilmb_bram_if_cntlr2
-
-  # Create instance: ilmb_bram_if_cntlr3, and set properties
-  set ilmb_bram_if_cntlr3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 ilmb_bram_if_cntlr3 ]
-  set_property -dict [ list CONFIG.C_ECC {0}  ] $ilmb_bram_if_cntlr3
-
   # Create instance: ilmb_v10, and set properties
   set ilmb_v10 [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_v10:3.0 ilmb_v10 ]
   set_property -dict [ list CONFIG.C_LMB_NUM_SLAVES {4}  ] $ilmb_v10
 
-  # Create instance: lmb_bram, and set properties
-  set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.2 lmb_bram ]
-  set_property -dict [ list CONFIG.Enable_B {Always_Enabled} CONFIG.Memory_Type {Single_Port_RAM} CONFIG.Port_B_Clock {0} CONFIG.Port_B_Enable_Rate {0} CONFIG.Port_B_Write_Rate {0} CONFIG.Use_RSTB_Pin {false} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram
-
-  # Create instance: lmb_bram1, and set properties
-  set lmb_bram1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.2 lmb_bram1 ]
-  set_property -dict [ list CONFIG.Enable_B {Always_Enabled} CONFIG.Memory_Type {Single_Port_RAM} CONFIG.Port_B_Clock {0} CONFIG.Port_B_Enable_Rate {0} CONFIG.Port_B_Write_Rate {0} CONFIG.Use_RSTB_Pin {false} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram1
-
   # Create instance: lmb_bram2, and set properties
   set lmb_bram2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.2 lmb_bram2 ]
-  set_property -dict [ list CONFIG.Enable_B {Always_Enabled} CONFIG.Memory_Type {Single_Port_RAM} CONFIG.Port_B_Clock {0} CONFIG.Port_B_Enable_Rate {0} CONFIG.Port_B_Write_Rate {0} CONFIG.Use_RSTB_Pin {false} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram2
-
-  # Create instance: lmb_bram3, and set properties
-  set lmb_bram3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.2 lmb_bram3 ]
-  set_property -dict [ list CONFIG.Enable_B {Always_Enabled} CONFIG.Memory_Type {Single_Port_RAM} CONFIG.Port_B_Clock {0} CONFIG.Port_B_Enable_Rate {0} CONFIG.Port_B_Write_Rate {0} CONFIG.Use_RSTB_Pin {false} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram3
-
-  # Create instance: lmb_bram4, and set properties
-  set lmb_bram4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.2 lmb_bram4 ]
-  set_property -dict [ list CONFIG.Enable_B {Always_Enabled} CONFIG.Memory_Type {Single_Port_RAM} CONFIG.Port_B_Clock {0} CONFIG.Port_B_Enable_Rate {0} CONFIG.Port_B_Write_Rate {0} CONFIG.Use_RSTB_Pin {false} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram4
-
-  # Create instance: lmb_bram5, and set properties
-  set lmb_bram5 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.2 lmb_bram5 ]
-  set_property -dict [ list CONFIG.Enable_B {Always_Enabled} CONFIG.Memory_Type {Single_Port_RAM} CONFIG.Port_B_Clock {0} CONFIG.Port_B_Enable_Rate {0} CONFIG.Port_B_Write_Rate {0} CONFIG.Use_RSTB_Pin {false} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram5
+  set_property -dict [ list CONFIG.Enable_B {Use_ENB_Pin} CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Port_B_Clock {100} CONFIG.Port_B_Enable_Rate {100} CONFIG.Port_B_Write_Rate {50} CONFIG.Use_RSTB_Pin {true} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram2
 
   # Create interface connections
   connect_bd_intf_net -intf_net Conn [get_bd_intf_pins dlmb_bram_if_cntlr1/SLMB] [get_bd_intf_pins dlmb_v10/LMB_Sl_1]
-  connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins ilmb_bram_if_cntlr1/SLMB] [get_bd_intf_pins ilmb_v10/LMB_Sl_1]
-  connect_bd_intf_net -intf_net Conn2 [get_bd_intf_pins ilmb_bram_if_cntlr2/SLMB] [get_bd_intf_pins ilmb_v10/LMB_Sl_2]
-  connect_bd_intf_net -intf_net Conn3 [get_bd_intf_pins ilmb_bram_if_cntlr3/SLMB] [get_bd_intf_pins ilmb_v10/LMB_Sl_3]
   connect_bd_intf_net -intf_net dlmb_bram_if_cntlr1_BRAM_PORT [get_bd_intf_pins dlmb_bram_if_cntlr1/BRAM_PORT] [get_bd_intf_pins lmb_bram2/BRAM_PORTA]
-  connect_bd_intf_net -intf_net ilmb_bram_if_cntlr1_BRAM_PORT [get_bd_intf_pins ilmb_bram_if_cntlr1/BRAM_PORT] [get_bd_intf_pins lmb_bram3/BRAM_PORTA]
-  connect_bd_intf_net -intf_net ilmb_bram_if_cntlr2_BRAM_PORT [get_bd_intf_pins ilmb_bram_if_cntlr2/BRAM_PORT] [get_bd_intf_pins lmb_bram4/BRAM_PORTA]
-  connect_bd_intf_net -intf_net ilmb_bram_if_cntlr3_BRAM_PORT [get_bd_intf_pins ilmb_bram_if_cntlr3/BRAM_PORT] [get_bd_intf_pins lmb_bram5/BRAM_PORTA]
-  connect_bd_intf_net -intf_net ilmb_bram_if_cntlr_BRAM_PORT [get_bd_intf_pins ilmb_bram_if_cntlr/BRAM_PORT] [get_bd_intf_pins lmb_bram1/BRAM_PORTA]
+  connect_bd_intf_net -intf_net ilmb_bram_if_cntlr_BRAM_PORT [get_bd_intf_pins ilmb_bram_if_cntlr/BRAM_PORT] [get_bd_intf_pins lmb_bram2/BRAM_PORTB]
   connect_bd_intf_net -intf_net microblaze_0_dlmb [get_bd_intf_pins DLMB] [get_bd_intf_pins dlmb_v10/LMB_M]
-  connect_bd_intf_net -intf_net microblaze_0_dlmb_bus [get_bd_intf_pins dlmb_bram_if_cntlr/SLMB] [get_bd_intf_pins dlmb_v10/LMB_Sl_0]
-  connect_bd_intf_net -intf_net microblaze_0_dlmb_cntlr [get_bd_intf_pins dlmb_bram_if_cntlr/BRAM_PORT] [get_bd_intf_pins lmb_bram/BRAM_PORTA]
   connect_bd_intf_net -intf_net microblaze_0_ilmb [get_bd_intf_pins ILMB] [get_bd_intf_pins ilmb_v10/LMB_M]
   connect_bd_intf_net -intf_net microblaze_0_ilmb_bus [get_bd_intf_pins ilmb_bram_if_cntlr/SLMB] [get_bd_intf_pins ilmb_v10/LMB_Sl_0]
 
   # Create port connections
-  connect_bd_net -net SYS_Rst_1 [get_bd_pins SYS_Rst] [get_bd_pins dlmb_bram_if_cntlr/LMB_Rst] [get_bd_pins dlmb_bram_if_cntlr1/LMB_Rst] [get_bd_pins dlmb_v10/SYS_Rst] [get_bd_pins ilmb_bram_if_cntlr/LMB_Rst] [get_bd_pins ilmb_bram_if_cntlr1/LMB_Rst] [get_bd_pins ilmb_bram_if_cntlr2/LMB_Rst] [get_bd_pins ilmb_bram_if_cntlr3/LMB_Rst] [get_bd_pins ilmb_v10/SYS_Rst]
-  connect_bd_net -net microblaze_0_Clk [get_bd_pins LMB_Clk] [get_bd_pins dlmb_bram_if_cntlr/LMB_Clk] [get_bd_pins dlmb_bram_if_cntlr1/LMB_Clk] [get_bd_pins dlmb_v10/LMB_Clk] [get_bd_pins ilmb_bram_if_cntlr/LMB_Clk] [get_bd_pins ilmb_bram_if_cntlr1/LMB_Clk] [get_bd_pins ilmb_bram_if_cntlr2/LMB_Clk] [get_bd_pins ilmb_bram_if_cntlr3/LMB_Clk] [get_bd_pins ilmb_v10/LMB_Clk]
+  connect_bd_net -net SYS_Rst_1 [get_bd_pins SYS_Rst] [get_bd_pins dlmb_bram_if_cntlr1/LMB_Rst] [get_bd_pins dlmb_v10/SYS_Rst] [get_bd_pins ilmb_bram_if_cntlr/LMB_Rst] [get_bd_pins ilmb_v10/SYS_Rst]
+  connect_bd_net -net microblaze_0_Clk [get_bd_pins LMB_Clk] [get_bd_pins dlmb_bram_if_cntlr1/LMB_Clk] [get_bd_pins dlmb_v10/LMB_Clk] [get_bd_pins ilmb_bram_if_cntlr/LMB_Clk] [get_bd_pins ilmb_v10/LMB_Clk]
   
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -383,12 +339,8 @@ connect_bd_intf_net -intf_net axi_mem_intercon_M00_AXI [get_bd_intf_pins axi_mem
   create_bd_addr_seg -range 0x10000 -offset 0x40E00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_ethernetlite_0/S_AXI/Reg] SEG_axi_ethernetlite_0_Reg
   create_bd_addr_seg -range 0x10000 -offset 0x41C00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_timer_0/S_AXI/Reg] SEG_axi_timer_0_Reg
   create_bd_addr_seg -range 0x10000 -offset 0x40600000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] SEG_axi_uartlite_0_Reg
-  create_bd_addr_seg -range 0x8000 -offset 0x50000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr1/SLMB/Mem] SEG_dlmb_bram_if_cntlr1_Mem
-  create_bd_addr_seg -range 0x10000 -offset 0x40000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] SEG_dlmb_bram_if_cntlr_Mem
-  create_bd_addr_seg -range 0x10000 -offset 0x10000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr1/SLMB/Mem] SEG_ilmb_bram_if_cntlr1_Mem
-  create_bd_addr_seg -range 0x10000 -offset 0x20000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr2/SLMB/Mem] SEG_ilmb_bram_if_cntlr2_Mem
-  create_bd_addr_seg -range 0x10000 -offset 0x30000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr3/SLMB/Mem] SEG_ilmb_bram_if_cntlr3_Mem
-  create_bd_addr_seg -range 0x10000 -offset 0x0 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
+  create_bd_addr_seg -range 0x10000 -offset 0x0 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr1/SLMB/Mem] SEG_dlmb_bram_if_cntlr1_Mem
+  create_bd_addr_seg -range 0x40000 -offset 0x0 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
   create_bd_addr_seg -range 0x10000 -offset 0x41200000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_axi_intc/s_axi/Reg] SEG_microblaze_0_axi_intc_Reg
   create_bd_addr_seg -range 0x1000000 -offset 0x76000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs psram_ip_0/S00_AXI/S00_AXI_mem] SEG_psram_ip_0_S00_AXI_mem
   create_bd_addr_seg -range 0x1000000 -offset 0x76000000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs psram_ip_0/S00_AXI/S00_AXI_mem] SEG_psram_ip_0_S00_AXI_mem
