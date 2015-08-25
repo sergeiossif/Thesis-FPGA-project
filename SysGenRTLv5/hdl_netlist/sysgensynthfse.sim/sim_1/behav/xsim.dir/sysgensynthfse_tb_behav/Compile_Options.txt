@@ -1,0 +1,1 @@
+-wto "fd57e7cc15964a74a7a0cb8181c9821b" --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "sysgensynthfse_tb_behav" "xil_defaultlib.sysgensynthfse_tb" -log "elaborate.log" 

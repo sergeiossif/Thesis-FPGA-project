@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Webtalk v2015.1 (64-bit)
+# SW Build 1215546 on Mon Apr 27 19:22:08 MDT 2015
+# IP Build 1209967 on Tue Apr 21 11:39:20 MDT 2015
+# Start of session at: Mon Aug 24 19:31:24 2015
+# Process ID: 100488
+# Log file: E:/Thesis/Thesis-FPGA-project/SysGenRTLv5/webtalk.log
+# Journal file: E:/Thesis/Thesis-FPGA-project/SysGenRTLv5\webtalk.jou
+#-----------------------------------------------------------
+source E:/Thesis/Thesis-FPGA-project/SysGenRTLv5/hdl_netlist/sysgensynthfse.hw/webtalk/labtool_webtalk.tcl -notrace

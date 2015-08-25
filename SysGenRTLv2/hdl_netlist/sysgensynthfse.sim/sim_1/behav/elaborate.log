@@ -1,0 +1,97 @@
+Vivado Simulator 2015.1
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2015.1/bin/unwrapped/win64.o/xelab.exe -wto 458c900dc00945698d98c0a02d1098ea --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot sysgensynthfse_tb_behav xil_defaultlib.sysgensynthfse_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xil_defaultlib.conv_pkg
+Compiling package std.textio
+Compiling package ieee.std_logic_arith
+Compiling package unisim.vcomponents
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling architecture behavior of entity xil_defaultlib.xlclk [\xlclk(10000,0)\]
+Compiling architecture behavior of entity xil_defaultlib.xltbsource [\xltbsource(12,10,2,1,"sysgensyn...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsource [\xltbsource(12,10,2,1,"sysgensyn...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsource [\xltbsource(10,8,2,1,"sysgensynt...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsource [\xltbsource(10,8,2,1,"sysgensynt...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(10,8,2,1,"sysgensynthf...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(10,8,2,1,"sysgensynthf...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(18,10,2,1,"sysgensynth...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(18,10,2,1,"sysgensynth...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(18,15,2,1,"sysgensynth...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(18,15,2,1,"sysgensynth...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(18,10,2,1,"sysgensynth...]
+Compiling architecture behavior of entity xil_defaultlib.xltbsink [\xltbsink(18,10,2,1,"sysgensynth...]
+Compiling architecture fdre_v of entity unisim.FDRE [\FDRE('0','0','0','0')\]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(1,0,"0000")(0...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(1,0,"0000",1)(...]
+Compiling architecture behavior of entity xil_defaultlib.xlclockdriver [\xlclockdriver(1,1,5,0)\]
+Compiling architecture fdse_v of entity unisim.FDSE [\FDSE('1','0','0','0')\]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(1,1,"0000")(0...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(1,1,"0000",1)(...]
+Compiling architecture behavior of entity xil_defaultlib.xlclockdriver [\xlclockdriver(2,2,5,0)\]
+Compiling architecture behavior of entity xil_defaultlib.xlclockdriver [\xlclockdriver(4,3,5,0)\]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse_default_clock_driver [sysgensynthfse_default_clock_dri...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_addrsr_f2a1535cba [sysgen_addrsr_f2a1535cba_default]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_accum_ac47251739 [sysgen_accum_ac47251739_default]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(3,2,"010")(0,...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(3,2,"010",1)(0...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_addsub_8a40b637d2 [sysgen_addsub_8a40b637d2_default]
+Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E("0000000000000000",'0')(...]
+Compiling architecture fde_v of entity unisim.FDE [\FDE('0')\]
+Compiling architecture structural of entity xil_defaultlib.srl17e [\srl17e(12,17)\]
+Compiling architecture structural of entity xil_defaultlib.srl17e [\srl17e(12,10)\]
+Compiling architecture structural of entity xil_defaultlib.synth_reg [\synth_reg(12,27)\]
+Compiling architecture behavior of entity xil_defaultlib.sysgensynthfse_xldelay [\sysgensynthfse_xldelay(12,27,0,...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_delay_061416299d [sysgen_delay_061416299d_default]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(36,2,"0000000...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(36,2,"00000000...]
+Compiling architecture behavior of entity xil_defaultlib.sysgensynthfse_xlregister [\sysgensynthfse_xlregister(36,"0...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_mcode_block_9962b0dfee [sysgen_mcode_block_9962b0dfee_de...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_mcode_block_ffc377abf7 [sysgen_mcode_block_ffc377abf7_de...]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(2,2,"11")(0,1...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(2,2,"11",1)(0,...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_mcode_block_7ed4b76418 [sysgen_mcode_block_7ed4b76418_de...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_mcode_block_f123d6727c [sysgen_mcode_block_f123d6727c_de...]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse_synth_lms_filter [sysgensynthfse_synth_lms_filter_...]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(18,2,"0000000...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(18,2,"00000001...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_mcode_block_c5df6a9ceb [sysgen_mcode_block_c5df6a9ceb_de...]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse_synth_lms_filter1 [sysgensynthfse_synth_lms_filter1...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_addsub_a3bd783a9f [sysgen_addsub_a3bd783a9f_default]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_delay_165894e142 [sysgen_delay_165894e142_default]
+Compiling architecture behav of entity xil_defaultlib.synth_reg_reg [\synth_reg_reg(12,1)\]
+Compiling architecture struct of entity xil_defaultlib.sysgensynthfse_xldsamp [\sysgensynthfse_xldsamp(12,10,2,...]
+Compiling architecture behav of entity xil_defaultlib.synth_reg_reg [\synth_reg_reg(12,2)\]
+Compiling architecture struct of entity xil_defaultlib.sysgensynthfse_xldsamp [\sysgensynthfse_xldsamp(12,10,2,...]
+Compiling architecture behav of entity xil_defaultlib.synth_reg_reg [\synth_reg_reg(18,1)\]
+Compiling architecture struct of entity xil_defaultlib.sysgensynthfse_xldsamp [\sysgensynthfse_xldsamp(18,10,2,...]
+Compiling architecture struct of entity xil_defaultlib.sysgensynthfse_xlusamp [\sysgensynthfse_xlusamp(18,15,2,...]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse_filters [sysgensynthfse_filters_default]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_delay_ce254631c3 [sysgen_delay_ce254631c3_default]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_mcode_block_9be8e7d538 [sysgen_mcode_block_9be8e7d538_de...]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(18,2,"0000000...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(18,2,"00000000...]
+Compiling architecture behavior of entity xil_defaultlib.sysgen_mcode_block_f5be8d2ed8 [sysgen_mcode_block_f5be8d2ed8_de...]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(10,2,"0000000...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(10,2,"00000000...]
+Compiling architecture behavior of entity xil_defaultlib.sysgensynthfse_xlregister [\sysgensynthfse_xlregister(10,"0...]
+Compiling architecture behav of entity xil_defaultlib.synth_reg_reg [\synth_reg_reg(10,11)\]
+Compiling architecture struct of entity xil_defaultlib.sysgensynthfse_xldsamp [\sysgensynthfse_xldsamp(10,8,2,1...]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse_t_2_fse [sysgensynthfse_t_2_fse_default]
+Compiling architecture structural of entity xil_defaultlib.single_reg_w_init [\single_reg_w_init(12,2,"0000000...]
+Compiling architecture structural of entity xil_defaultlib.synth_reg_w_init [\synth_reg_w_init(12,2,"00000000...]
+Compiling architecture behavior of entity xil_defaultlib.sysgensynthfse_xlregister [\sysgensynthfse_xlregister(12,"0...]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse_struct [sysgensynthfse_struct_default]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse [sysgensynthfse_default]
+Compiling architecture structural of entity xil_defaultlib.sysgensynthfse_tb
+Waiting for 3 sub-compilation(s) to finish...
+Built simulation snapshot sysgensynthfse_tb_behav

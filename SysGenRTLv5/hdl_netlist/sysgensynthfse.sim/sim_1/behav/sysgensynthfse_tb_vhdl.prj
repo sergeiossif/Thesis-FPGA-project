@@ -1,0 +1,14 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/conv_pkg.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/srl17e.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/single_reg_w_init.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/synth_reg.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/synth_reg_w_init.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/synth_reg_reg.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/xlclockdriver_rd.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/sysgensynthfse_entity_declarations.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sources_1/imports/sysgen/sysgensynthfse.vhd"
+vhdl xil_defaultlib  "../../../sysgensynthfse.srcs/sim_1/imports/sysgen/sysgensynthfse_tb.vhd"
+
+# Do not sort compile order
+nosort

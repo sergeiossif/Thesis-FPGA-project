@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sysgensynthfse_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="conv_pkg" />
+            <top_module name="sysgensynthfse_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="15" />
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/i_desired_net" type="array">
+      <obj_property name="ElementShortName">i_desired_net[9:0]</obj_property>
+      <obj_property name="ObjectShortName">i_desired_net[9:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/i_out_net" type="array">
+      <obj_property name="ElementShortName">i_out_net[9:0]</obj_property>
+      <obj_property name="ObjectShortName">i_out_net[9:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/clk_net" type="logic">
+      <obj_property name="ElementShortName">clk_net</obj_property>
+      <obj_property name="ObjectShortName">clk_net</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/i_in_net" type="array">
+      <obj_property name="ElementShortName">i_in_net[11:0]</obj_property>
+      <obj_property name="ObjectShortName">i_in_net[11:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/q_desired_net" type="array">
+      <obj_property name="ElementShortName">q_desired_net[9:0]</obj_property>
+      <obj_property name="ObjectShortName">q_desired_net[9:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/q_in_net" type="array">
+      <obj_property name="ElementShortName">q_in_net[11:0]</obj_property>
+      <obj_property name="ObjectShortName">q_in_net[11:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/coeff_q_net" type="array">
+      <obj_property name="ElementShortName">coeff_q_net[17:0]</obj_property>
+      <obj_property name="ObjectShortName">coeff_q_net[17:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/e_q_net" type="array">
+      <obj_property name="ElementShortName">e_q_net[17:0]</obj_property>
+      <obj_property name="ObjectShortName">e_q_net[17:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/dh_i_net" type="array">
+      <obj_property name="ElementShortName">dh_i_net[17:0]</obj_property>
+      <obj_property name="ObjectShortName">dh_i_net[17:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/e_i_net" type="array">
+      <obj_property name="ElementShortName">e_i_net[17:0]</obj_property>
+      <obj_property name="ObjectShortName">e_i_net[17:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/q_out_net" type="array">
+      <obj_property name="ElementShortName">q_out_net[9:0]</obj_property>
+      <obj_property name="ObjectShortName">q_out_net[9:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/dh_q_net" type="array">
+      <obj_property name="ElementShortName">dh_q_net[17:0]</obj_property>
+      <obj_property name="ObjectShortName">dh_q_net[17:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/coeff_i_net" type="array">
+      <obj_property name="ElementShortName">coeff_i_net[17:0]</obj_property>
+      <obj_property name="ObjectShortName">coeff_i_net[17:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/sysgen_dut/ce_4_net" type="logic">
+      <obj_property name="ElementShortName">ce_4_net</obj_property>
+      <obj_property name="ObjectShortName">ce_4_net</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/sysgensynthfse_tb/sysgen_dut/clr" type="logic">
+      <obj_property name="ElementShortName">clr</obj_property>
+      <obj_property name="ObjectShortName">clr</obj_property>
+   </wvobject>
+</wave_config>

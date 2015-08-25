@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<style type="text/css">
+body {margin-top:6.35em; 
+      margin-left:6.35em; 
+      width:62.5em;
+      text-align:justify;
+      font-size:1em; 
+      font-family:"Arial", Serif;
+      color:#000000;}
+
+h1 {font-size:1.125em;
+    font-family:"Arial", Sans-serif;
+    color:#943634;}
+
+p {font-size:inherit;
+   width:62.5em;
+   font-family:inherit;
+   color:inherit;}
+
+ul {font-size:inherit;
+    width:62.5em;
+    font-family:inherit;
+    color:inherit;}
+
+li {width:46.15em;}
+
+.image {position: relative;
+        width: 100%;}
+
+table {border-collapse:collapse;
+       border-spacing:0;
+       caption-side:bottom;
+       border-style:solid;
+       border-width:thin;
+       font-size:1em;
+       width:62.5em;
+       font-family:inherit;
+       color:inherit;}
+
+.title_table {border-collapse:collapse;
+       border-spacing:0;
+       caption-side:bottom;
+       font-size:1em;
+       width:62.5em;
+       border-style:none;}
+
+.title_table_image_cell {border-bottom:thin solid #000000;}
+
+.title_table_design_cell {vertical-align:bottom;
+        font-size:1.875em;
+        text-align:right;
+        border-bottom:thin solid #000000;}
+
+.title_table_date_cell{font-size:1.25em;
+        vertical-align:bottom;
+        text-align:left;
+        border-bottom:thick solid #943634}
+
+.sg_row {font-size:inherit;
+         font-family:inherit;
+         color:inherit;
+         border-style:solid;
+         border-width:thin;}
+
+.sg_cell {margin:0;
+          padding:1em;
+          border-width:inherit;
+          border-style:inherit;
+          font-size:inherit;
+          font-family:inherit;
+          color:inherit;}
+
+.sg_cell_first_row {margin:0;
+          padding:1em;
+          border-width:inherit;
+          border-style:inherit;
+          border-bottom:thick solid #943634;
+          font-size:inherit;
+          font-family:inherit;
+          color:inherit;}
+
+.sg_caption {text-align:left;
+             caption-side:bottom;
+             font-family:inherit;
+             font-size:inherit;}
+</style>
+</head>
+<body>
+<table class="title_table">
+<tr>
+<td class="title_table_image_cell"></td>
+<td class="title_table_design_cell">sysgensynthfse</td>
+</tr>
+<tr>
+<td colspan=2 class="title_table_date_cell"><b></b></td>
+</tr>
+</table>
+<h1>int sysgensynthfse_Initialize(sysgensynthfse* InstancePtr, u16 DeviceId)</h1>
+<p>
+Initialize sysgensynthfse pointer with a specifc instance of the device based device id.
+<br/>
+  @param InstancePtr to be initialized
+<br/>
+  @param DeviceId device id assigned to the device in xparameters.h
+<br/>
+<br/>
+  @return int XST_SUCCESS if initialization is successful
+<br/>
+</p>
+<h1>int sysgensynthfse_i_out_read(sysgensynthfse *InstancePtr);</h1>
+<p>
+ Read from i_out gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the i_out instance to operate on.<br/>
+<br/>
+ @return	int<br/>
+
+ @note    i_out.<br/>
+<br/>
+</p>
+<h1>int sysgensynthfse_dh_i_read(sysgensynthfse *InstancePtr);</h1>
+<p>
+ Read from dh_i gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the dh_i instance to operate on.<br/>
+<br/>
+ @return	int<br/>
+
+ @note    .<br/>
+<br/>
+</p>
+<h1>int sysgensynthfse_dh_q_read(sysgensynthfse *InstancePtr);</h1>
+<p>
+ Read from dh_q gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the dh_q instance to operate on.<br/>
+<br/>
+ @return	int<br/>
+
+ @note    .<br/>
+<br/>
+</p>
+<h1>void sysgensynthfse_i_in_write(sysgensynthfse *InstancePtr, int Data);</h1>
+<p>
+ Write to i_in gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the i_in instance to operate on.<br/>
+ @param	Data is value to be written to gateway i_in.<br/>
+<br/>
+ @return	None.<br/>
+<br/>
+ @note    .<br/>
+<br/>
+</p>
+<h1>int sysgensynthfse_i_in_read(sysgensynthfse *InstancePtr);</h1>
+<p>
+ Read from i_in gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the i_in instance to operate on.<br/>
+<br/>
+ @return	int<br/>
+
+ @note    .<br/>
+<br/>
+</p>
+<h1>void sysgensynthfse_q_in_write(sysgensynthfse *InstancePtr, int Data);</h1>
+<p>
+ Write to q_in gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the q_in instance to operate on.<br/>
+ @param	Data is value to be written to gateway q_in.<br/>
+<br/>
+ @return	None.<br/>
+<br/>
+ @note    .<br/>
+<br/>
+</p>
+<h1>int sysgensynthfse_q_in_read(sysgensynthfse *InstancePtr);</h1>
+<p>
+ Read from q_in gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the q_in instance to operate on.<br/>
+<br/>
+ @return	int<br/>
+
+ @note    .<br/>
+<br/>
+</p>
+<h1>int sysgensynthfse_q_out_read(sysgensynthfse *InstancePtr);</h1>
+<p>
+ Read from q_out gateway of sysgensynthfse. Assignments are LSB-justified.<br/>
+<br/>
+ @param	InstancePtr is the q_out instance to operate on.<br/>
+<br/>
+ @return	int<br/>
+
+ @note    .<br/>
+<br/>
+</p>
+</body>
+</html>

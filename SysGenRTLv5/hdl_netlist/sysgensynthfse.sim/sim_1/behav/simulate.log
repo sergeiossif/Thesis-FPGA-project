@@ -1,0 +1,41 @@
+Vivado Simulator 2015.1
+WARNING: Your Simulation license expires in 0 day(s).
+Time resolution is 1 ps
+
+
+Beginning comparisons for instance sysgensynthfse_t_2_fse_filters_synth_lms_filter1_coeff_i
+
+
+Beginning comparisons for instance sysgensynthfse_t_2_fse_filters_synth_lms_filter1_coeff_q
+
+
+Beginning comparisons for instance sysgensynthfse_i_out
+
+
+Beginning comparisons for instance sysgensynthfse_q_out
+
+
+Beginning comparisons for instance sysgensynthfse_t_2_fse_dh_i
+
+
+Beginning comparisons for instance sysgensynthfse_t_2_fse_dh_q
+
+
+Beginning comparisons for instance sysgensynthfse_t_2_fse_e_i
+
+
+Beginning comparisons for instance sysgensynthfse_t_2_fse_e_q
+
+
+** Simulation summary for instance sysgensynthfse_t_2_fse_filters_synth_lms_filter1_coeff_i:
+   Samples Processed: 1781
+           - Checked: 1781 (100.0%)
+           - Ignored: 0 (0.0%) Don't Cares
+   Test completed with no errors.
+
+
+** Simulation summary for instance sysgensynthfse_t_2_fse_filters_synth_lms_filter1_coeff_q:
+   Samples Processed: 1781
+           - Checked: 1781 (100.0%)
+           - Ignored: 0 (0.0%) Don't Cares
+   Test completed with no errors.

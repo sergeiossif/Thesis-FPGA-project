@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Webtalk v2015.1 (64-bit)
+# SW Build 1215546 on Mon Apr 27 19:22:08 MDT 2015
+# IP Build 1209967 on Tue Apr 21 11:39:20 MDT 2015
+# Start of session at: Mon Aug 24 19:13:40 2015
+# Process ID: 93068
+# Log file: E:/Thesis/Thesis-FPGA-project/SysGenRTLv2/webtalk.log
+# Journal file: E:/Thesis/Thesis-FPGA-project/SysGenRTLv2\webtalk.jou
+#-----------------------------------------------------------
+source E:/Thesis/Thesis-FPGA-project/SysGenRTLv2/hdl_netlist/sysgensynthfse.hw/webtalk/labtool_webtalk.tcl -notrace
+webtalk_transmit: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 270.246 ; gain = 0.000
+
+    while executing
+"webtalk_transmit -clientid 2329274214 -regid "211039328_0_0_965" -xml E:/Thesis/Thesis-FPGA-project/SysGenRTLv2/hdl_netlist/sysgensynthfse.hw/webtalk/..."
+    (file "E:/Thesis/Thesis-FPGA-project/SysGenRTLv2/hdl_netlist/sysgensynthfse.hw/webtalk/labtool_webtalk.tcl" line 26)
+INFO: [Common 17-206] Exiting Webtalk at Mon Aug 24 19:13:46 2015...
